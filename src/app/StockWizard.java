@@ -1,5 +1,6 @@
 package app;
 
+import data.Input;
 import data.Session;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,21 +14,22 @@ import java.io.FileNotFoundException;
 
 public class StockWizard extends Application {
 
-    private Data data;
     private SentenceGenerator[] modules;
-    private Session[] sessions;
 
     public StockWizard() throws FileNotFoundException {
         // Get example data
-        data = new Data();
-        sessions = data.getExampleSessions();
-        for(var s : sessions){
-            System.out.println(s);
-        }
+        Input input = new Input();
+        Data exampleData = input.getExampleData();
+
+        // Print data
+//        Session[] sessions = exampleData.getSessions();
+//        for(var s : sessions){
+//            System.out.println(s);
+//        }
 
         // Test 1 module
         System.out.println("-------------------------");
-        SentenceGenerator s = new Dominance(sessions);
+        SentenceGenerator s = new CountUpAndDown(exampleData);
         System.out.println("Mẫu câu: " + s.example());
         System.out.print("Kết quả: ");
         System.out.println(s.generate());

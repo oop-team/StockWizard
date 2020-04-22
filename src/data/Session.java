@@ -1,5 +1,6 @@
 package data;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /***
@@ -101,9 +102,11 @@ public class Session {
 
     @Override
     public String toString() {
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
+        String d = dt1.format(date);
         return "Session{" +
                 "ticker='" + ticker + '\'' +
-                ", date=" + date +
+                ", date=" + d +
                 ", open=" + open +
                 ", close=" + close +
                 ", high=" + high +

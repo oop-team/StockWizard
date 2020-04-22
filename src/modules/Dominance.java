@@ -8,9 +8,8 @@ import data.Session;
  * Ví dụ: "Số mã giảm chiếm ưu thế với 102 mã, số mã tăng chỉ 74."
  */
 public class Dominance extends SentenceGenerator{
-
-    public Dominance(Session[] sessions) {
-        super(sessions);
+    public Dominance(Data data) {
+        super(data);
     }
 
 

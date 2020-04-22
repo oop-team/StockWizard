@@ -5,10 +5,10 @@ import data.Session;
 
 public abstract class SentenceGenerator {
 
-    protected Session[] sessions;
+    protected Data data;
 
-    public SentenceGenerator(Session[] sessions){
-        this.sessions = sessions;
+    public SentenceGenerator(Data data){
+        this.data = data;
     }
 
     /***
