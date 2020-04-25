@@ -9,5 +9,6 @@ Dự án sinh câu tự động về chứng khoán, phục vụ cho việc vi�
 - Đặt chỉ định truy cập (public, default, protected, private) một cách hợp lý.
 
 ### Yêu cầu khác
+- Khi code nên tạo ra một nhánh mới, để tránh đụng độ với người khác. Sau đó gửi Pull request cho mọi người kiểm tra, ok rồi mới gộp vào nhánh master.
 - Các câu sinh ra phải có kết thúc bằng dấu chấm.
 - Thuật toán nên tối ưu, không nên để độ phức tạp quá lớn, vì dữ liệu đầu vào có thể sẽ rất lớn (vài trăm nghìn dòng).
