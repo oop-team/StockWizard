@@ -41,13 +41,14 @@ public class StockWizard extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("view/updateData.fxml"));
         primaryStage.setTitle("Stock Wizard");
         primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+        primaryStage.show(); 
     }
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        //launch(args);
-
-        new StockWizard();
+//        launch(args);
+         Data data = (new Input()).getDataFromWeb("https://s.cafef.vn/du-lieu/download.chn");
+ 
+//        new StockWizard();
     }
 }

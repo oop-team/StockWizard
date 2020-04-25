@@ -9,14 +9,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import service.Crawler;
+
 public class Input {
-    public Data getDataFromWeb(){
+    public Data getDataFromWeb(String  url){
         // TODO:
-        return null;
+        Crawler crawler = Crawler.getInstance();
+        
+        return crawler.crawlDatafromLink(url);
     }
 
-    public Data getDataFromLocal(){
+    public Data getDataFromLocal(File file){
         // TODO:
+    	
+    	
         return null;
     }
 
