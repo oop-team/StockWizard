@@ -1,22 +1,19 @@
 package app.controller;
 
+import app.controller.helper.Mediator;
 import data.Data;
 import data.Input;
 import data.Output;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 import modules.CountUpAndDown;
 import modules.SentenceGenerator;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class SelectTemplate implements Initializable {

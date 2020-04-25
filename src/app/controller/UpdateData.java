@@ -1,8 +1,8 @@
 package app.controller;
 
+import app.controller.helper.Mediator;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
 
 public class UpdateData {
 

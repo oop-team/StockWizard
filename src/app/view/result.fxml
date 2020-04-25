@@ -14,21 +14,29 @@
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="app.controller.Result"
           prefHeight="450.0" prefWidth="450.0">
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" prefWidth="300" percentWidth="100" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints prefHeight="30" />
+        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints prefHeight="30" />
+    </rowConstraints>
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Result">
+    <Label text="Result">
         <font>
             <Font size="20.0"/>
         </font>
     </Label>
-    <TextArea GridPane.columnIndex="0" GridPane.rowIndex="1"
-               prefWidth="430" prefHeight="370" wrapText="true"
-               editable="true" >
+    <TextArea GridPane.rowIndex="1"
+              wrapText="true"
+              editable="true" >
         Sàn HNX hiện đang có 77 mã tăng giá, 33 mã giảm giá và 11 mã đứng giá.Sàn HNX hiện đang có 0 mã tăng giá, 2 mã giảm giá và 1 mã đứng giá.
     </TextArea>
-    <HBox style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2">
+    <HBox GridPane.rowIndex="2" style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" >
         <Button mnemonicParsing="false" text="Back" onAction="#gotoSelect"/>
-        <Button mnemonicParsing="false" text="Save" />
+        <Button mnemonicParsing="false" text="Save" onAction="#save" />
     </HBox>
 </GridPane>

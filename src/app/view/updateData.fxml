@@ -11,37 +11,34 @@
           xmlns="http://javafx.com/javafx/10.0.2-internal"
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="app.controller.UpdateData">
-   <padding>
+    <padding>
       <Insets bottom="10" left="10" right="10" top="10"/>
-   </padding>
-<!--   <children>-->
-<!--      <AnchorPane>-->
-<!--         <children>-->
-            <Label style="-fx-padding: 10 0 0 125" GridPane.rowIndex="0"  text="Update data">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </Label>
-            <VBox style="-fx-padding: 55 0 0 15" GridPane.rowIndex="1" GridPane.columnIndex="0" spacing="10">
-               <Label text="Update automatically" />
-               <Button mnemonicParsing="false" text="Update" />
-               <ProgressBar  prefWidth="200.0" progress="0.0" />
-            </VBox>
-            <VBox style="-fx-padding: 25 0 0 15" GridPane.rowIndex="2" GridPane.columnIndex="0" spacing="10">
-               <Label  text="Update manually" />
-               <Button  mnemonicParsing="false" text="Browse data" />
-            </VBox>
-            <HBox style="-fx-padding:100 -120 -100 0" GridPane.rowIndex="3" GridPane.columnIndex="0"
-                  alignment="BOTTOM_RIGHT" >
-                <Button mnemonicParsing="false" onAction="#gotoSelect" text="Next" />
-            </HBox>
-<!--         </children>-->
-<!--      </AnchorPane>-->
-<!--   </children>-->
-<!--   <columnConstraints>-->
-<!--      <ColumnConstraints />-->
-<!--   </columnConstraints>-->
-<!--   <rowConstraints>-->
-<!--      <RowConstraints />-->
-<!--   </rowConstraints>-->
+    </padding>
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" percentWidth="100" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints prefHeight="75" />
+        <RowConstraints prefHeight="100" />
+        <RowConstraints prefHeight="100" />
+        <RowConstraints vgrow="ALWAYS" />
+    </rowConstraints>
+    <Label alignment="TOP_CENTER" GridPane.rowIndex="0"  text="Update data">
+       <font>
+          <Font size="25.0" />
+       </font>
+    </Label>
+    <VBox style="-fx-padding: 0 0 0 0" GridPane.rowIndex="1" spacing="10">
+       <Label text="Update automatically" />
+       <Button mnemonicParsing="false" text="Update" />
+       <ProgressBar  prefWidth="200.0" progress="0.0" />
+    </VBox>
+    <VBox style="-fx-padding: 0 0 0 0" GridPane.rowIndex="2" spacing="10">
+       <Label  text="Update manually" />
+       <Button  mnemonicParsing="false" text="Browse data" />
+    </VBox>
+    <HBox GridPane.rowIndex="3"
+          alignment="BOTTOM_RIGHT" >
+        <Button mnemonicParsing="false" onAction="#gotoSelect" text="Next" />
+    </HBox>
 </GridPane>

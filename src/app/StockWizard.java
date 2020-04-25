@@ -1,19 +1,16 @@
 package app;
 
-import app.controller.Mediator;
-import app.controller.ScreenController;
+import app.controller.helper.Mediator;
+import app.controller.helper.ScreenController;
 import data.Input;
-import data.Session;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import data.Data;
 import modules.*;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 
@@ -54,25 +51,25 @@ public class StockWizard extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        Mediator.unSubcribe("onGoingUpdateData");
-        Mediator.unSubcribe("onGoingSelectSentence");
-        Mediator.unSubcribe("onGoingResult");
-        Mediator.subcribe("onGoingUpdateData", a -> onGoingUpdateData(null));
-        Mediator.subcribe("onGoingSelectSentence", a -> onGoingSelectSentence(null));
-        Mediator.subcribe("onGoingResult", a -> onGoingResult(null));
+        Mediator.unSubscribe("onGoingUpdateData");
+        Mediator.unSubscribe("onGoingSelectSentence");
+        Mediator.unSubscribe("onGoingResult");
+        Mediator.subscribe("onGoingUpdateData", a -> onGoingUpdateData(null));
+        Mediator.subscribe("onGoingSelectSentence", a -> onGoingSelectSentence(null));
+        Mediator.subscribe("onGoingResult", a -> onGoingResult(null));
 
     }
 
     public void onGoingUpdateData(ActionEvent e) {
-        screenController.active("../view/updateData.fxml");
+        screenController.active("../../view/updateData.fxml");
     }
 
     public void onGoingSelectSentence(ActionEvent e) {
-        screenController.active("../view/selectTemplate.fxml");
+        screenController.active("../../view/selectTemplate.fxml");
     }
 
     public void onGoingResult(ActionEvent e) {
-        screenController.active("../view/Result.fxml");
+        screenController.active("../../view/Result.fxml");
     }
 
 

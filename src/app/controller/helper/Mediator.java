@@ -1,4 +1,4 @@
-package app.controller;
+package app.controller.helper;
 
 import javafx.event.ActionEvent;
 import java.util.*;
@@ -9,17 +9,17 @@ public class Mediator {
     private static HashMap<String, List<EventHandler<ActionEvent>>> action_dict =
             new HashMap<String, List<EventHandler<ActionEvent>>>();
 
-    public static void unSubcribe(String token, EventHandler<ActionEvent> callBack) {
+    public static void unSubscribe(String token, EventHandler<ActionEvent> callBack) {
         if (action_dict.containsKey(token))
             action_dict.get(token).remove(callBack);
     }
 
-    public static void unSubcribe(String token) {
+    public static void unSubscribe(String token) {
         if (action_dict.containsKey(token))
             action_dict.remove(token);
     }
 
-    public static void subcribe(String token, EventHandler<ActionEvent> callBack) {
+    public static void subscribe(String token, EventHandler<ActionEvent> callBack) {
         if (!action_dict.containsKey(token)) {
             var list = new ArrayList<EventHandler<ActionEvent>>();
             list.add(callBack);
@@ -42,6 +42,5 @@ public class Mediator {
         if (action_dict.containsKey(token))
             for (EventHandler<ActionEvent> callBack : action_dict.get(token))
                 callBack.handle(null);
-
     }
 }
