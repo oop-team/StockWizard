@@ -1,54 +1,56 @@
 package app.controller;
 
+import data.Data;
+import data.Input;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Callback;
+import modules.CountUpAndDown;
+import modules.SentenceGenerator;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SelectTemplate implements Initializable {
 
+
+    private ObservableList<SentenceGenerator> listSentences;
     @FXML
-    private ListView listSentencesView;
-    ObservableList<String> listSentences;
-    private ListProperty<String> listProperty = new SimpleListProperty<String>();
+    private TableView tableView = new TableView();
 
     public SelectTemplate() {
-
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listSentences = FXCollections.<String>observableArrayList(
-                "Tuy vậy, số mã tăng vẫn chiếm đa số.",
-                "Như vậy, số mã giảm đang chiếm ưu thế.",
-                "Số mã ở vùng 1-2x chiếm 60%.",
-                "Số mã giảm chiếm ưu thế với 102 mã, số mã tăng chỉ 74.",
-                "Số mã giảm chiếm đa số nhưng không tới mức áp đảo."
+        Input input = new Input();
+        Data exampleData = input.getExampleData();
+
+        // TEST DATA
+        listSentences = FXCollections.<SentenceGenerator>observableArrayList(
+                new CountUpAndDown(exampleData),
+                new CountUpAndDown(exampleData),
+                new CountUpAndDown(exampleData),
+                new CountUpAndDown(exampleData),
+                new CountUpAndDown(exampleData)
         );
-        loadView();
+        tableView.getItems().addAll(listSentences);
     }
 
-    private void loadView() {
-
-        listSentencesView.itemsProperty().bind(listProperty);
-
-        listSentencesView = new ListView<String>(listSentences);
-//        listSentencesView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-//            @Override
-//            public ListCell<String> call(ListView listView) {
-//                return new ListCell();
-//            }
-//        });
-        listProperty.set(listSentences);
+    @FXML
+    public void gotoUpdate(ActionEvent event) {
+        Mediator.Notify("onGoingUpdateData");
     }
-
-
+    @FXML
+    public void gotoResult(ActionEvent event) {
+        Mediator.Notify("onGoingResult");
+    }
 }

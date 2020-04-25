@@ -5,35 +5,43 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.UpdateData">
+<GridPane hgap="10" vgap="10"
+          prefHeight="450"
+          prefWidth="450"
+          xmlns="http://javafx.com/javafx/10.0.2-internal"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="app.controller.UpdateData">
    <padding>
-      <Insets bottom="10" left="10" right="10" />
+      <Insets bottom="10" left="10" right="10" top="10"/>
    </padding>
-   <children>
-      <AnchorPane>
-         <children>
-            <Label layoutX="110" text="Update data">
+<!--   <children>-->
+<!--      <AnchorPane>-->
+<!--         <children>-->
+            <Label style="-fx-padding: 10 0 0 125" GridPane.rowIndex="0"  text="Update data">
                <font>
                   <Font size="32.0" />
                </font>
             </Label>
-            <VBox layoutY="75" spacing="10">
+            <VBox style="-fx-padding: 55 0 0 15" GridPane.rowIndex="1" GridPane.columnIndex="0" spacing="10">
                <Label text="Update automatically" />
                <Button mnemonicParsing="false" text="Update" />
                <ProgressBar  prefWidth="200.0" progress="0.0" />
             </VBox>
-            <VBox layoutY="190" spacing="10">
+            <VBox style="-fx-padding: 25 0 0 15" GridPane.rowIndex="2" GridPane.columnIndex="0" spacing="10">
                <Label  text="Update manually" />
                <Button  mnemonicParsing="false" text="Browse data" />
             </VBox>
-            <Button alignment="CENTER_RIGHT" layoutX="350" layoutY="350" mnemonicParsing="false" onAction="#testClickButton1" text="Next" />
-         </children>
-      </AnchorPane>
-   </children>
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+            <HBox style="-fx-padding:100 -120 -100 0" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                  alignment="BOTTOM_RIGHT" >
+                <Button mnemonicParsing="false" onAction="#gotoSelect" text="Next" />
+            </HBox>
+<!--         </children>-->
+<!--      </AnchorPane>-->
+<!--   </children>-->
+<!--   <columnConstraints>-->
+<!--      <ColumnConstraints />-->
+<!--   </columnConstraints>-->
+<!--   <rowConstraints>-->
+<!--      <RowConstraints />-->
+<!--   </rowConstraints>-->
 </GridPane>

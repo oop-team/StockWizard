@@ -3,24 +3,36 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
 <GridPane prefHeight="450" prefWidth="450" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SelectTemplate">
    <padding>
       <Insets bottom="10" left="10" right="10" top="10" />
    </padding>
-   <children>
-      <AnchorPane>
-         <children>
-            <Label text="Select sentence:">
-               <font>
-                  <Font size="20.0"/>
-               </font>
-            </Label>
-            <ListView layoutY="30" fx:id="listSentencesView" />
-         </children>
-      </AnchorPane>
-   </children>
+      <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Select sentence">
+         <font>
+            <Font size="20.0"/>
+         </font>
+      </Label>
+      <TableView GridPane.columnIndex="0" GridPane.rowIndex="1" prefWidth="430" prefHeight="370" fx:id="tableView" editable="true">
+         <columns>
+            <TableColumn prefWidth="40" style="-fx-alignment: CENTER;">
+
+               <cellValueFactory>
+                  <PropertyValueFactory property="select"/>
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Sentence">
+               <cellValueFactory>
+                  <PropertyValueFactory property="sentence" />
+               </cellValueFactory>
+            </TableColumn>
+         </columns>
+      </TableView>
+      <HBox style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2">
+         <Button mnemonicParsing="false" text="Back" onAction="#gotoUpdate" />
+         <Button mnemonicParsing="false" text="Next" onAction="#gotoResult"/>
+      </HBox>
 </GridPane>
 
