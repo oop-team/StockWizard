@@ -2,6 +2,7 @@ package app.controller;
 
 import data.Data;
 import data.Input;
+import data.Output;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -21,7 +22,7 @@ import java.util.ResourceBundle;
 public class SelectTemplate implements Initializable {
 
 
-    private ObservableList<SentenceGenerator> listSentences;
+    private ObservableList<Output> listSentences;
     @FXML
     private TableView tableView = new TableView();
 
@@ -33,14 +34,15 @@ public class SelectTemplate implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Input input = new Input();
         Data exampleData = input.getExampleData();
+        SentenceGenerator generator = new CountUpAndDown(exampleData);
 
         // TEST DATA
-        listSentences = FXCollections.<SentenceGenerator>observableArrayList(
-                new CountUpAndDown(exampleData),
-                new CountUpAndDown(exampleData),
-                new CountUpAndDown(exampleData),
-                new CountUpAndDown(exampleData),
-                new CountUpAndDown(exampleData)
+        listSentences = FXCollections.<Output>observableArrayList(
+                new Output(generator.generate()),
+                new Output(generator.generate()),
+                new Output(generator.generate()),
+                new Output(generator.generate()),
+                new Output(generator.generate())
         );
         tableView.getItems().addAll(listSentences);
     }

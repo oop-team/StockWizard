@@ -2,8 +2,6 @@ package modules;
 
 import data.Data;
 import data.Session;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.CheckBox;
 
 import java.util.*;
 
@@ -14,22 +12,6 @@ import java.util.*;
  * So sánh giá đóng cửa (CLOSE) của cùng một mã cổ phiếu trong 2 ngày đó, xem nó tăng hay giảm, rồi đếm vào kết quả.
  */
 public class CountUpAndDown extends SentenceGenerator {
-
-    private final SimpleStringProperty sentence = new SimpleStringProperty("Sàn HNX hiện đang có 77 mã tăng giá, 33 mã giảm giá và 11 mã đứng");
-    private CheckBox select = new CheckBox();
-
-    public String getSentence() {
-        return sentence.get();
-    }
-
-    public CheckBox getSelect() {
-        return select;
-    }
-
-    public void setSelect(CheckBox checkBox) {
-        this.select = checkBox;
-    }
-
 
     public CountUpAndDown(Data data) {
         super(data);

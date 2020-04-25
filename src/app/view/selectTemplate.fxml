@@ -7,15 +7,23 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <GridPane prefHeight="450" prefWidth="450" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SelectTemplate">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="300" percentWidth="100" />
+   </columnConstraints>
+<!--   <rowConstraints>-->
+<!--      <RowConstraints minHeight="300" percentHeight="100" />-->
+<!--   </rowConstraints>-->
    <padding>
       <Insets bottom="10" left="10" right="10" top="10" />
    </padding>
-      <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Select sentence">
+      <Label GridPane.rowIndex="0" text="Select sentence">
          <font>
             <Font size="20.0"/>
          </font>
       </Label>
-      <TableView GridPane.columnIndex="0" GridPane.rowIndex="1" prefWidth="430" prefHeight="370" fx:id="tableView" editable="true">
+      <TableView GridPane.rowIndex="1"
+                 style="-fx-padding: 10,10,10,10"
+                 fx:id="tableView" editable="true">
          <columns>
             <TableColumn prefWidth="40" style="-fx-alignment: CENTER;">
 
@@ -30,7 +38,7 @@
             </TableColumn>
          </columns>
       </TableView>
-      <HBox style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2">
+      <HBox style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" GridPane.rowIndex="2">
          <Button mnemonicParsing="false" text="Back" onAction="#gotoUpdate" />
          <Button mnemonicParsing="false" text="Next" onAction="#gotoResult"/>
       </HBox>
