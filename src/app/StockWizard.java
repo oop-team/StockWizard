@@ -38,16 +38,18 @@ public class StockWizard extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Display GUI
-        Parent root = FXMLLoader.load(getClass().getResource("view/updateData.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/selectTemplate.fxml"));
         primaryStage.setTitle("Stock Wizard");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 450, 450));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        //launch(args);
-
-        new StockWizard();
+        launch(args);
+        //new StockWizard();
     }
+
+
+
 }
