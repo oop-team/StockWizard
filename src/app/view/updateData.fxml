@@ -30,12 +30,12 @@
     </Label>
     <VBox style="-fx-padding: 0 0 0 0" GridPane.rowIndex="1" spacing="10">
        <Label text="Update automatically" />
-       <Button mnemonicParsing="false" text="Update" />
+       <Button mnemonicParsing="false" text="Update" onAction="#downloadData" />
        <ProgressBar  prefWidth="200.0" progress="0.0" />
     </VBox>
     <VBox style="-fx-padding: 0 0 0 0" GridPane.rowIndex="2" spacing="10">
        <Label  text="Update manually" />
-       <Button  mnemonicParsing="false" text="Browse data" />
+       <Button  mnemonicParsing="false" text="Browse data" onAction="#browseData"/>
     </VBox>
     <HBox GridPane.rowIndex="3"
           alignment="BOTTOM_RIGHT" >
