@@ -47,7 +47,7 @@ public class StockWizard extends Application {
 
     public static void main(String[] args) throws FileNotFoundException {
 //        launch(args);
-         Data data = (new Input()).getDataFromWeb("https://s.cafef.vn/du-lieu/download.chn");
+          (new Input()).getDataFromWeb("https://s.cafef.vn/du-lieu/download.chn");
  
 //        new StockWizard();
     }
