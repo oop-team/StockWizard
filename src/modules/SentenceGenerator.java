@@ -2,6 +2,7 @@ package modules;
 
 import data.Data;
 import data.Session;
+import javafx.beans.property.SimpleStringProperty;
 
 public abstract class SentenceGenerator {
 
