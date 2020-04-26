@@ -72,6 +72,9 @@ public class Input {
             e.printStackTrace();
         }
         assert sc != null;
+        sc.useDelimiter("\n");
+        sc.next();
+
         sc.useDelimiter("[,\n]");
         
         while (sc.hasNext())  //returns a boolean value

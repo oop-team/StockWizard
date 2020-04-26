@@ -25,6 +25,7 @@ public class CountUpAndDown extends SentenceGenerator {
     @Override
     public String generate() {
         String stockEx = data.getStockExchange().toString();
+        // Kết quả
         int[] count = count();
         String[] result = new String[3];
         result[0] = String.format("Sàn %s hiện đang có %d mã tăng giá, %d mã giảm giá và %d mã đứng giá", stockEx, count[0], count[1], count[2]);

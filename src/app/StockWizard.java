@@ -33,7 +33,7 @@ public class StockWizard extends Application {
 
         // Test 1 module
         System.out.println("-------------------------");
-        SentenceGenerator s = new CountUpAndDown(exampleData);
+        SentenceGenerator s = new Example(exampleData);
         System.out.println("Mẫu câu: " + s.example());
         System.out.print("Kết quả: ");
         System.out.println(s.generate());
@@ -74,8 +74,8 @@ public class StockWizard extends Application {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        launch(args);
-//        new StockWizard();
+//        launch(args);
+        new StockWizard();
 
     }
 
