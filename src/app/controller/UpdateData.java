@@ -11,4 +11,13 @@ public class UpdateData {
         Mediator.Notify("onGoingSelectSentence");
     }
 
+    @FXML
+    public void browseData(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void downloadData(ActionEvent event) {
+
+    }
 }

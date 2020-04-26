@@ -35,11 +35,11 @@ public class SelectTemplate implements Initializable {
 
         // TEST DATA
         listSentences = FXCollections.<Output>observableArrayList(
-                new Output(generator.generate()),
-                new Output(generator.generate()),
-                new Output(generator.generate()),
-                new Output(generator.generate()),
-                new Output(generator.generate())
+                new Output(generator.example()),
+                new Output(generator.example()),
+                new Output(generator.example()),
+                new Output(generator.example()),
+                new Output(generator.example())
         );
         tableView.getItems().addAll(listSentences);
     }
