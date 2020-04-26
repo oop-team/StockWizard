@@ -9,15 +9,52 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import service.Crawler;
+import service.FileHelper;
+
 public class Input {
-    public Data getDataFromWeb(){
+	
+    public Data[] getDataFromWeb(String  url){
         // TODO:
-        return null;
+        Crawler crawler = Crawler.getInstance();
+        FileHelper fileHelper = FileHelper.getInstance();
+        ArrayList<Data> datasFromWeb = new ArrayList<Data>();
+        
+        ArrayList<String> downloadLinks = crawler.crawlDownloadLink(url);
+        
+        if(downloadLinks.size()>0) {
+        	datasFromWeb = fileHelper.scanFileByUrl(downloadLinks.get(0));
+        	
+        }
+        
+        
+        Data[] ret = new Data[datasFromWeb.size()];
+        for(int i = 0; i < datasFromWeb.size(); i++){
+            ret[i] = datasFromWeb.get(i);
+        	System.out.println("TEST FOR FUN MAN ");
+        	System.out.println(ret[i].getStockExchange());
+        	System.out.println(ret[i].getSessions().length);
+        }
+        
+        return ret;
+        
     }
 
-    public Data getDataFromLocal(){
+    public Data[] getDataFromLocal(String filePath){
         // TODO:
-        return null;
+    	
+    	FileHelper fileHelper = FileHelper.getInstance();
+    	ArrayList<Data> datasFromLocal = fileHelper.scanFile(filePath);
+        
+        Data[] ret = new Data[datasFromLocal.size()];
+        for(int i = 0; i < datasFromLocal.size(); i++){
+            ret[i] = datasFromLocal.get(i);
+        	System.out.println("TEST FOR FUN MAN ");
+        	System.out.println(ret[i].getStockExchange());
+        	System.out.println(ret[i].getSessions().length);
+        }
+    	
+        return ret;
     }
 
     /***
@@ -36,6 +73,7 @@ public class Input {
         }
         assert sc != null;
         sc.useDelimiter("[,\n]");
+        
         while (sc.hasNext())  //returns a boolean value
         {
             Session session = new Session();
