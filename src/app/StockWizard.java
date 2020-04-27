@@ -33,7 +33,7 @@ public class StockWizard extends Application {
 
         // Test 1 module
         System.out.println("-------------------------");
-        SentenceGenerator s = new Example(exampleData);
+        SentenceGenerator s = new UpDownAndNotTrade(exampleData);
         System.out.println("Mẫu câu: " + s.example());
         System.out.print("Kết quả: ");
         System.out.println(s.generate());
