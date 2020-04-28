@@ -8,26 +8,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UpDownAndNotTrade extends SentenceGenerator {
-    public UpDownAndNotTrade(Data data) {
-        super(data);
-    }
 
     @Override
     public String example() {
-        return "Sàn HNX hiện có 153 mã tăng giá, 10 mã giảm giá và 3 mã chưa có giao dịch.";
+        return "Hiện có 153 mã tăng giá, 10 mã giảm giá và 3 mã chưa có giao dịch.";
     }
 
     @Override
     public String generate() {
+        int[] countHNX = count(data[0]);
+        int[] countHSX = count(data[1]);
+        int[] countUPCOM = count(data[2]);
 
-        String stockEx = data.getStockExchange().toString();
-        int[] count = count();
-        String result = new String();
-        result = String.format("Sàn %s hiện có %d mã tăng giá, %d mã giảm giá và %d mã chưa có giao dịch.",stockEx, count[0], count[1], count[2]);
-        return result;
+        int[] count = new int[3];
+        for(int i = 0; i < 3; i++){
+            count[i] = countHNX[i] + countHSX[i] + countUPCOM[i];
+        }
+        return String.format("Hiện có %d mã tăng giá, %d mã giảm giá và %d mã chưa có giao dịch.", count[0], count[1], count[2]);
     }
 
-    private int[] count() {
+    private int[] count(Data data) {
         int[] ret = new int[3];
 
         Map<String, Float> map = new HashMap<>();

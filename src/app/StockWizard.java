@@ -13,30 +13,32 @@ import modules.*;
 
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StockWizard extends Application {
 
     private ScreenController screenController;
 
-    private SentenceGenerator[] modules;
+    private List<SentenceGenerator> modules;
 
     public StockWizard() throws FileNotFoundException {
-        // Get example data
         Input input = new Input();
-        Data exampleData = input.getExampleData();
 
-        // Print data
-//        Session[] sessions = exampleData.getSessions();
-//        for(var s : sessions){
-//            System.out.println(s);
-//        }
+        // Init modules
+        modules = new ArrayList<>();
+        modules.add(new UpDownAndNotTrade());
+        modules.add(new CountUpAndDown());
+        modules.add(new MaxIncreasePercent());
 
-        // Test 1 module
-        System.out.println("-------------------------");
-        SentenceGenerator s = new UpDownAndNotTrade(exampleData);
-        System.out.println("Mẫu câu: " + s.example());
-        System.out.print("Kết quả: ");
-        System.out.println(s.generate());
+        for (var m : modules){
+            System.out.println("-------------------------");
+            System.out.println("Module: " + m.getClass().getName());
+            System.out.println("Mẫu câu: " + m.example());
+            System.out.print("Kết quả: ");
+            System.out.println(m.generate());
+        }
+
     }
 
     @Override
@@ -74,8 +76,8 @@ public class StockWizard extends Application {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-//        launch(args);
-        new StockWizard();
+        launch(args);
+//        new StockWizard();
 
     }
 

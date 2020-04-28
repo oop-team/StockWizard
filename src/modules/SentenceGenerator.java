@@ -1,30 +1,33 @@
 package modules;
 
 import data.Data;
+import data.Input;
 import data.Session;
 import javafx.beans.property.SimpleStringProperty;
 
 public abstract class SentenceGenerator {
 
-    protected Data data;
+    protected Data[] data;
 
-    public SentenceGenerator(Data data){
-        this.data = data;
+    public SentenceGenerator() {
+        // Lấy dữ liệu từ lớp Input
+        if (Input.inputData != null){
+            data = Input.inputData;
+        }
+        else{
+            System.out.println("ERROR: Input data is not initialized");
+        }
     }
 
     /***
      *
      * @return Câu mẫu (để người dùng chọn)
      */
-    public String example(){
-        return "Đây là câu mẫu";
-    }
+    public abstract String example();
 
     /***
      *
-     * @return Tạo ra câu theo mẫu, dựa vào dữ liệu đã có
+     * @return Tạo ra một câu theo mẫu, dựa vào dữ liệu đã có
      */
-    public String generate(){
-        return "Đây là câu được tạo ra";
-    }
+    public abstract String generate();
 }

@@ -4,18 +4,30 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import service.Crawler;
 import service.FileHelper;
 
 public class Input {
-	
+
+    /***
+     * Dữ liệu sau khi được cập nhật lưu vào đây
+     * inputData[0]: dữ liệu trên sàn HNX
+     * inputData[1]: dữ liệu trên sàn HSX
+     * inputData[2]: dữ liệu trên sàn UPCOM
+     */
+    public static Data[] inputData;
+
+    public void updateDataFromWeb(String url){
+        inputData = getDataFromWeb(url);
+    }
+
+    public void updateDataFromLocal(String filePath){
+        inputData = getDataFromLocal(filePath);
+    }
+
     public Data[] getDataFromWeb(String  url){
-        // TODO:
         Crawler crawler = Crawler.getInstance();
         FileHelper fileHelper = FileHelper.getInstance();
         ArrayList<Data> datasFromWeb = new ArrayList<Data>();
@@ -37,12 +49,10 @@ public class Input {
         }
         
         return ret;
-        
+
     }
 
     public Data[] getDataFromLocal(String filePath){
-        // TODO:
-    	
     	FileHelper fileHelper = FileHelper.getInstance();
     	ArrayList<Data> datasFromLocal = fileHelper.scanFile(filePath);
         
