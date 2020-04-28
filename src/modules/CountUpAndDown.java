@@ -43,40 +43,44 @@ public class CountUpAndDown extends SentenceGenerator{
      * @return [countUp, countDown, countStand]
      */
     private int[] count(Data data) {
-        int[] ret = new int[3]; // Lưu kết quả return
+        int[] ret = new int[3];
 
-        Map<String, Float> map = new HashMap<>(); // Lưu danh sách các mã cổ phiếu
+        Map<String, Float> map = new HashMap<>();
 
         Session[] sessions = data.getSessions();
-        Date nearestDate = sessions[0].getDate(); // Ngày gần nhất
+        Date today = sessions[0].getDate();
+        Date previousDay = null; // Ngày giao dịch trước đó
 
-        for (Session s : sessions) {
-            // Chỉ duyệt trong 2 ngày gần nhất
-            long diffTime = nearestDate.getTime() - s.getDate().getTime();
-            int diffDay = (int) (diffTime / (1000 * 60 * 60 * 24));
-            if (diffDay > 1) {
+        // Tìm previousDay
+        for (Session s : sessions){
+            if (!s.getDate().equals(today)){
+                previousDay = s.getDate();
                 break;
-            }
-
-            // Xử lí tính toán
-            String ticker = s.getTicker();
-            float close = s.getClose();
-            if (diffDay == 0) {
-                map.put(ticker, s.getClose());
-            } else {
-                if (map.containsKey(ticker)) {
-                    float newClose = map.get(ticker);
-                    if (newClose - close > 0) {
-                        ret[0] += 1;
-                    } else if (newClose - close < 0) {
-                        ret[1] += 1;
-                    } else {
-                        ret[2] += 1;
-                    }
-                }
             }
         }
 
+        for (Session s : sessions) {
+            String ticker = s.getTicker();
+            if(s.getDate().equals(today)){
+                map.put(ticker, s.getClose());
+            }
+            else if (s.getDate().equals(previousDay)){
+                if (map.containsKey(ticker)) {
+                    float close = s.getClose();
+                    float newClose = map.get(ticker);
+                    if (newClose - close > 0) {
+                        ret[0] +=1;
+                    } else if (newClose - close < 0) {
+                        ret[1] +=1;
+                    } else if (newClose - close == 0) {
+                        ret[2] +=1;
+                    }
+                }
+            }
+            else{
+                break;
+            }
+        }
         return ret;
     }
 

@@ -29,19 +29,19 @@ public class SelectTemplate implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Input input = new Input();
-        Data exampleData = input.getExampleData();
-        SentenceGenerator generator = new CountUpAndDown(exampleData);
-
-        // TEST DATA
-        listSentences = FXCollections.<Output>observableArrayList(
-                new Output(generator.example()),
-                new Output(generator.example()),
-                new Output(generator.example()),
-                new Output(generator.example()),
-                new Output(generator.example())
-        );
-        tableView.getItems().addAll(listSentences);
+//        Input input = new Input();
+//        Data exampleData = input.getExampleData();
+//        SentenceGenerator generator = new CountUpAndDown(exampleData);
+//
+//        // TEST DATA
+//        listSentences = FXCollections.<Output>observableArrayList(
+//                new Output(generator.example()),
+//                new Output(generator.example()),
+//                new Output(generator.example()),
+//                new Output(generator.example()),
+//                new Output(generator.example())
+//        );
+//        tableView.getItems().addAll(listSentences);
     }
 
     @FXML

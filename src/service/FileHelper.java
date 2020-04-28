@@ -177,7 +177,7 @@ public class FileHelper {
 			return StockExchange.HNX;
 		}
 		if(fileNameString.indexOf("UPCOM") > -1) {
-			return StockExchange.HNX;
+			return StockExchange.UPCOM;
 		}
 
 		return StockExchange.HSX;

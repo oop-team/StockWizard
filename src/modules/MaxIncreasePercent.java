@@ -25,22 +25,24 @@ public class MaxIncreasePercent extends SentenceGenerator{
             Map<String, Float> map = new HashMap<>();
 
             Session[] sessions = data[i].getSessions();
-            Date nearestDate = sessions[0].getDate(); // Ngày gần nhất
+            Date today = sessions[0].getDate();
+            Date previousDay = null; // Ngày giao dịch trước đó
 
-            for (Session s : sessions) {
-                // Chỉ duyệt trong 2 ngày gần nhất
-                long diffTime = nearestDate.getTime() - s.getDate().getTime();
-                int diffDay = (int) (diffTime / (1000 * 60 * 60 * 24));
-                if (diffDay > 1) {
+            // Tìm previousDay
+            for (Session s : sessions){
+                if (!s.getDate().equals(today)){
+                    previousDay = s.getDate();
                     break;
                 }
+            }
 
+            for (Session s : sessions) {
                 String ticker = s.getTicker();
                 float close = s.getClose();
-
-                if (diffDay == 0) {
+                if (s.getDate().equals(today)){
                     map.put(ticker, s.getClose());
-                } else { //diffDay = 1
+                }
+                else if (s.getDate().equals(previousDay)){
                     if (map.containsKey(ticker)){
                         float newClose = map.get(ticker);
                         if (newClose > close){
