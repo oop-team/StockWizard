@@ -77,8 +77,8 @@ public class StockWizard extends Application {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        //launch(args);
-        new StockWizard();
+        launch(args);
+        //new StockWizard();
 
     }
 
