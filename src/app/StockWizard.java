@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StockWizard extends Application {
+
     public static Stage primaryStage;
 
     private ScreenController screenController;
@@ -45,8 +46,6 @@ public class StockWizard extends Application {
         Mediator.subscribe("onGoingUpdateData", a -> onGoingUpdateData(null));
         Mediator.subscribe("onGoingSelectSentence", a -> onGoingSelectSentence(null));
         Mediator.subscribe("onGoingResult", a -> onGoingResult(null));
-
-
     }
 
     public void onGoingUpdateData(ActionEvent e) {
@@ -60,7 +59,6 @@ public class StockWizard extends Application {
     public void onGoingResult(ActionEvent e) {
         screenController.active("../../view/Result.fxml");
     }
-
 
     public static void main(String[] args) throws FileNotFoundException {
         launch(args);

@@ -28,7 +28,7 @@
          <columns>
             <TableColumn prefWidth="40" style="-fx-alignment: CENTER;">
                <cellValueFactory>
-                  <PropertyValueFactory property="select"/>
+                  <PropertyValueFactory property="checkBox"/>
                </cellValueFactory>
             </TableColumn>
             <TableColumn text="Sentence">

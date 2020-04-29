@@ -23,12 +23,30 @@ import java.util.ResourceBundle;
 public class SelectTemplate implements Initializable {
 
     private List<SentenceGenerator> modules;
+
     private ObservableList<Output> listSentences;
+
     @FXML
     private TableView tableView = new TableView();
 
-    public SelectTemplate() {
+    private static SelectTemplate instance;
 
+    public static SelectTemplate getInstance() {
+        if (instance == null)
+            return new SelectTemplate();
+        return instance;
+    }
+
+    public List<SentenceGenerator> getModules() {
+        return modules;
+    }
+
+    public ObservableList<Output> getListSentences() {
+        return listSentences;
+    }
+
+    public SelectTemplate() {
+        instance = this;
     }
 
     @Override
@@ -39,8 +57,9 @@ public class SelectTemplate implements Initializable {
         modules.add(new CountUpAndDown());
         modules.add(new MaxIncreasePercent());
 
+        int id = 0;
         for (var module : modules){
-            listSentences.add(new Output(module.generate()));
+            listSentences.add(new Output(id++,module));
         }
         tableView.getItems().addAll(listSentences);
     }

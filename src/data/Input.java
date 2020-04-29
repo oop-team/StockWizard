@@ -52,7 +52,7 @@ public class Input {
 
     }
 
-    private static Data[] getDataFromLocal(String filePath){
+    public static Data[] getDataFromLocal(String filePath){
         System.out.println("Loading file " + filePath + " ...");
     	FileHelper fileHelper = FileHelper.getInstance();
     	ArrayList<Data> datasFromLocal = fileHelper.scanFile(filePath);

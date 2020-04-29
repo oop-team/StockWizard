@@ -2,21 +2,49 @@ package data;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.CheckBox;
+import modules.SentenceGenerator;
 
 public class Output {
+
+    private int id;
+    private CheckBox checkBox;
+    private SentenceGenerator sentenceGenerator;
     private SimpleStringProperty sentence;
-    private CheckBox select;
 
     public Output() {
-        select = new CheckBox();
-        sentence = new SimpleStringProperty("");
+        this.id = 0;
+        this.checkBox = new CheckBox();
+        this.sentence = new SimpleStringProperty("");
     }
 
-    public Output(String sentence) {
-        select = new CheckBox();
+    public Output(int id, String sentence) {
+        this.id = id;
+        this.checkBox = new CheckBox();
         this.sentence = new SimpleStringProperty(sentence);
     }
 
+    public SentenceGenerator getSentenceGenerator() {
+        return sentenceGenerator;
+    }
+
+    public void setSentenceGenerator(SentenceGenerator sentenceGenerator) {
+        this.sentenceGenerator = sentenceGenerator;
+    }
+
+    public Output(int id, SentenceGenerator sentenceGenerator) {
+        this.id = id;
+        this.checkBox = new CheckBox();
+        this.sentenceGenerator = sentenceGenerator;
+        this.sentence = new SimpleStringProperty(sentenceGenerator.example());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSentence() {
         return sentence.get();
@@ -26,11 +54,15 @@ public class Output {
         this.sentence = new SimpleStringProperty(sentence);
     }
 
-    public CheckBox getSelect() {
-        return select;
+    public CheckBox getCheckBox() {
+        return this.checkBox;
     }
 
-    public void setSelect(CheckBox checkBox) {
-        this.select = checkBox;
+    public void setheckBox(CheckBox checkBox) {
+        this.checkBox = checkBox;
+    }
+
+    public boolean getSelected() {
+        return this.checkBox.isSelected();
     }
 }

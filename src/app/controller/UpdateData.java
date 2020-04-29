@@ -18,8 +18,6 @@ import modules.UpDownAndNotTrade;
 
 public class UpdateData {
 
-
-
     @FXML
     public void gotoSelect(ActionEvent event) {
         Mediator.Notify("onGoingSelectSentence");
@@ -27,11 +25,16 @@ public class UpdateData {
 
     @FXML
     public void browseData(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(StockWizard.primaryStage);
+        try
+        {
+            FileChooser fileChooser = new FileChooser();
+            File file = fileChooser.showOpenDialog(StockWizard.primaryStage);
 
-        Input input = new Input();
-        input.updateDataFromLocal(file.getAbsolutePath());
+            Input.updateDataFromLocal(file.getAbsolutePath());
+        }
+        catch(Exception e) {
+            System.out.println("BrowsData Ex: " + e.getMessage());
+        }
     }
 
     @FXML
