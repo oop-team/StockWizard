@@ -24,7 +24,7 @@ public class StockWizard extends Application {
 
     public StockWizard() throws FileNotFoundException {
         Input input = new Input();
-        input.updateDataFromLocal("res/sample data/CafeF.SolieuGD.Upto27042020.zip");
+        input.updateDataFromLocal("res/sample/data/CafeF.SolieuGD.Upto27042020.zip");
 
         // Init modules
         modules = new ArrayList<>();
@@ -77,9 +77,8 @@ public class StockWizard extends Application {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-//        launch(args);
+        launch(args);
         new StockWizard();
-
     }
 
 
