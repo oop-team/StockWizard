@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import data.Data;
 import modules.*;
@@ -17,34 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StockWizard extends Application {
+    public static Stage primaryStage;
 
     private ScreenController screenController;
 
-    private List<SentenceGenerator> modules;
-
     public StockWizard() throws FileNotFoundException {
-        Input input = new Input();
-        input.updateDataFromLocal("res/sample/data/CafeF.SolieuGD.Upto27042020.zip");
-
-        // Init modules
-        modules = new ArrayList<>();
-        modules.add(new UpDownAndNotTrade());
-        modules.add(new CountUpAndDown());
-        modules.add(new MaxIncreasePercent());
-
-        for (var m : modules){
-            System.out.println("-------------------------");
-            System.out.println("Module: " + m.getClass().getName());
-            System.out.println("Mẫu câu: " + m.example());
-            System.out.print("Kết quả: ");
-            System.out.println(m.generate());
-        }
 
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Display GUI
+        this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("view/updateData.fxml"));
         Scene scene = new Scene(root, 450, 450);
 
@@ -60,6 +45,7 @@ public class StockWizard extends Application {
         Mediator.subscribe("onGoingUpdateData", a -> onGoingUpdateData(null));
         Mediator.subscribe("onGoingSelectSentence", a -> onGoingSelectSentence(null));
         Mediator.subscribe("onGoingResult", a -> onGoingResult(null));
+
 
     }
 
@@ -78,7 +64,7 @@ public class StockWizard extends Application {
 
     public static void main(String[] args) throws FileNotFoundException {
         launch(args);
-        new StockWizard();
+        //new StockWizard();
     }
 
 

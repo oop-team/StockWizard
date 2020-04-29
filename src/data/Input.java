@@ -23,7 +23,7 @@ public class Input {
         inputData = getDataFromWeb(url);
     }
 
-    public void updateDataFromLocal(String filePath){
+    public static void updateDataFromLocal(String filePath){
         inputData = getDataFromLocal(filePath);
     }
 
@@ -52,7 +52,7 @@ public class Input {
 
     }
 
-    private Data[] getDataFromLocal(String filePath){
+    private static Data[] getDataFromLocal(String filePath){
         System.out.println("Loading file " + filePath + " ...");
     	FileHelper fileHelper = FileHelper.getInstance();
     	ArrayList<Data> datasFromLocal = fileHelper.scanFile(filePath);

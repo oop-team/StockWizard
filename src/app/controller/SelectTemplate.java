@@ -11,14 +11,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import modules.CountUpAndDown;
+import modules.MaxIncreasePercent;
 import modules.SentenceGenerator;
+import modules.UpDownAndNotTrade;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SelectTemplate implements Initializable {
 
-
+    private List<SentenceGenerator> modules;
     private ObservableList<Output> listSentences;
     @FXML
     private TableView tableView = new TableView();
@@ -29,19 +33,16 @@ public class SelectTemplate implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        Input input = new Input();
-//        Data exampleData = input.getExampleData();
-//        SentenceGenerator generator = new CountUpAndDown(exampleData);
-//
-//        // TEST DATA
-//        listSentences = FXCollections.<Output>observableArrayList(
-//                new Output(generator.example()),
-//                new Output(generator.example()),
-//                new Output(generator.example()),
-//                new Output(generator.example()),
-//                new Output(generator.example())
-//        );
-//        tableView.getItems().addAll(listSentences);
+        listSentences = FXCollections.<Output>observableArrayList();
+        modules = new ArrayList<>();
+        modules.add(new UpDownAndNotTrade());
+        modules.add(new CountUpAndDown());
+        modules.add(new MaxIncreasePercent());
+
+        for (var module : modules){
+            listSentences.add(new Output(module.generate()));
+        }
+        tableView.getItems().addAll(listSentences);
     }
 
     @FXML
