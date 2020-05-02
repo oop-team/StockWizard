@@ -1,5 +1,11 @@
 package utilities;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.Scanner;
+
 public class Dictionary {
     /**
      * Tên doanh nghiệp ứng với mã cổ phiếu => Tân
@@ -25,8 +31,26 @@ public class Dictionary {
      * Danh sách các mã cổ phiếu tương ứng
      *
      */
-    public String[] getTickerBy(String group){
-        return null;
+    public String[] getTickerBy(String group) throws FileNotFoundException {
+        return getTicker("Nhomnganh\\" + group + ".txt");
+    }
+
+    public String[] getTicker(String fileString) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File(fileString));
+        int numberOfTicker = Integer.parseInt(scanner.nextLine());
+        String[] ret = new String[numberOfTicker];
+        for(int i = 0; i < numberOfTicker; i++){
+            ret[i] = scanner.nextLine();
+        }
+        return ret;
+    }
+
+    public static void main(String[] args) throws IOException{
+        Dictionary dictionary = new Dictionary();
+        String[] ret = dictionary.getTickerBy("Công nghệ viễn thông");
+        for(String s : ret){
+            System.out.println(s);
+        }
     }
 
 }
