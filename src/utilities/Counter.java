@@ -3,7 +3,7 @@ package utilities;
 import data.Session;
 
 /**
- * Đếm số mã tăng, giảm, đứng giá, không giao dịch
+ * Đếm số mã tăng, giảm, đứng giá, không giao dịch => Nhật
  * <p>
  * input: Data
  * output: số mã tăng, giảm, đứng giá, không giao dịch trong ngày gần nhất
