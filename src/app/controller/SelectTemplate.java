@@ -10,10 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import modules.CountUpAndDown;
-import modules.MaxIncreasePercent;
-import modules.SentenceGenerator;
-import modules.UpDownAndNotTrade;
+import modules.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -56,6 +53,7 @@ public class SelectTemplate implements Initializable {
         modules.add(new UpDownAndNotTrade());
         modules.add(new CountUpAndDown());
         modules.add(new MaxIncreasePercent());
+        modules.add(new Summary());
 
         int id = 0;
         for (var module : modules){
