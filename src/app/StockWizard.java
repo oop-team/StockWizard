@@ -11,6 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import data.Data;
 import modules.*;
+import utilities.CandleStick;
 
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
