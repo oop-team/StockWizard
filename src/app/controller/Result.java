@@ -25,14 +25,6 @@ public class Result implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        resultTextArea.setText("Test 123\nHung dep trai");
-//        for(var item : SelectTemplate.getInstance().getModules()) {
-//            System.out.println(item.example());
-//        }
-        init();
-    }
-
-    private void init() {
         String text = new String();
         for(var item : SelectTemplate.getInstance().getListSentences()) {
             text += item.getSelected() ? item.getSentenceGenerator().generate() + "\n" : "";
