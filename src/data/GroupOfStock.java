@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 /*
-Nhiệm vụ: đưa ra thông tin các cổ phiếu trong 5 nhóm được lưu tại NhomCoPhieu.txt
+Nhiệm vụ: đưa ra thông tin các cổ phiếu trong 5 nhóm được lưu tại rổ cổ phiếu.txt.txt
 nameOfStock lưu tên nhóm cổ phiếu muốn tìm
  */
 
@@ -20,7 +20,7 @@ public class GroupOfStock {
            try {
                BufferedReader ReadFile= null;
                FileReader fr=null;
-               fr= new FileReader("NhomCoPhieu.txt");
+               fr= new FileReader("res/general_information/rổ cổ phiếu.txt.txt");
                ReadFile= new BufferedReader(fr);
                String line= ReadFile.readLine();// lưu từng dòng của file nhóm cổ phiếu txt
 
