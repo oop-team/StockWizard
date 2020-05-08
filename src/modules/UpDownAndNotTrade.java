@@ -30,9 +30,9 @@ public class UpDownAndNotTrade extends SentenceGenerator {
     private int[] count(Data data) {
         int[] ret = new int[3];
 
-        Map<String, Float> map = new HashMap<>();
+        Map<String, Float> map = new HashMap<>();// Lưu mã cổ phiếu và giá đóng cửa
 
-        Session[] sessions = data.getSessions();
+        Session[] sessions = data.getSessions();// Lưu giữ liệu các phiên giao dịch vào sessions
         Date today = sessions[0].getDate();
         Date previousDay = null; // Ngày giao dịch trước đó
 
