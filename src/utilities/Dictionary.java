@@ -7,6 +7,38 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Dictionary {
+    public static final String[] industryGroups = {
+            "Bất động sản",
+            "Cao su",
+            "Chứng khoán",
+            "Công nghệ viễn thông",
+            "Dược phẩm - Y tế - Hoá chất",
+            "Dầu khí",
+            "Dịch vụ - Du lịch",
+            "Dịch vụ công ích",
+            "Giáo dục",
+            "Hàng không",
+            "Khoáng sản",
+            "Ngân hàng  - Bảo hiểm",
+            "Nhựa - Bao bì",
+            "Năng lượng - Điện - Khí",
+            "Phân bón",
+            "Sản xuất - Kinh doanh",
+            "Thuỷ sản",
+            "Thép",
+            "Thương mại",
+            "Thực phẩm",
+            "Vận tải - Cảng - Taxi",
+            "Vật liệu xây dựng",
+            "Xây dựng",
+            "Đầu tư phát triển",
+            "Đầu tư xây dựng",
+    };
+
+    public static final String[] stockBasket = {
+            "VN30", "HNX30", "BlueChip", "HOT", "PHÒNG THỦ"
+    };
+
     /**
      * Tên doanh nghiệp ứng với mã cổ phiếu => Tân
      *
@@ -44,13 +76,4 @@ public class Dictionary {
         }
         return ret;
     }
-
-    public static void main(String[] args) throws IOException{
-        Dictionary dictionary = new Dictionary();
-        String[] ret = dictionary.getTickerBy("Công nghệ viễn thông");
-        for(String s : ret){
-            System.out.println(s);
-        }
-    }
-
 }
