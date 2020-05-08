@@ -1,8 +1,6 @@
 package app.controller;
 
 import app.controller.helper.Mediator;
-import data.Data;
-import data.Input;
 import data.Output;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,7 +51,7 @@ public class SelectTemplate implements Initializable {
         modules.add(new UpDownAndNotTrade());
         modules.add(new CountUpAndDown());
         modules.add(new MaxIncreasePercent());
-        modules.add(new Summary());
+        modules.add(new SummaryAAV());
 
         int id = 0;
         for (var module : modules){
