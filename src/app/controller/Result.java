@@ -6,8 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
-import modules.SentenceGenerator;
 
 import java.net.URL;
 import java.util.List;
