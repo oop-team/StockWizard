@@ -2,6 +2,8 @@ package app.controller.helper;
 
 import javafx.event.ActionEvent;
 import java.util.*;
+
+import javafx.event.Event;
 import javafx.event.EventHandler;
 
 public class Mediator {
@@ -39,8 +41,13 @@ public class Mediator {
 
     public static void Notify(String token)
     {
+        Notify(token, null);
+    }
+
+    public static void Notify(String token, ActionEvent obj)
+    {
         if (action_dict.containsKey(token))
             for (EventHandler<ActionEvent> callBack : action_dict.get(token))
-                callBack.handle(null);
+                callBack.handle(obj);
     }
 }
