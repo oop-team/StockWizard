@@ -5,40 +5,46 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane hgap="10" vgap="10"
-          prefHeight="450"
-          prefWidth="450"
-          xmlns="http://javafx.com/javafx/10.0.2-internal"
-          xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="app.controller.UpdateData">
+<GridPane hgap="10" prefHeight="450" prefWidth="450" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.UpdateData">
     <padding>
-      <Insets bottom="10" left="10" right="10" top="10"/>
+      <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
     <columnConstraints>
         <ColumnConstraints hgrow="ALWAYS" percentWidth="100" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints prefHeight="75" />
-        <RowConstraints prefHeight="100" />
-        <RowConstraints prefHeight="100" />
-        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints prefHeight="75.0" />
+        <RowConstraints maxHeight="130" minHeight="105" prefHeight="115" />
+        <RowConstraints maxHeight="200" minHeight="100" prefHeight="170" />
+        <RowConstraints maxHeight="130" minHeight="27.0" prefHeight="35.0" vgrow="ALWAYS" />
     </rowConstraints>
-    <Label alignment="TOP_CENTER" GridPane.rowIndex="0"  text="Update data">
+    <Label alignment="TOP_CENTER" text="Update data" GridPane.rowIndex="0">
        <font>
           <Font size="25.0" />
        </font>
     </Label>
-    <VBox style="-fx-padding: 0 0 0 0" GridPane.rowIndex="1" spacing="10">
+    <VBox prefHeight="159.0" prefWidth="430.0" spacing="10" style="-fx-padding: 0 0 0 0" GridPane.rowIndex="1">
+      <Separator prefWidth="200.0" />
        <Label text="Update automatically" />
-       <Button mnemonicParsing="false" text="Update" onAction="#downloadData" />
-       <ProgressBar  prefWidth="200.0" progress="0.0" />
+       <Button mnemonicParsing="false" onAction="#downloadData" text="Update" />
+      <ProgressBar prefWidth="200.0" progress="0.0" />
+      <Separator prefWidth="200.0" />
     </VBox>
-    <VBox style="-fx-padding: 0 0 0 0" GridPane.rowIndex="2" spacing="10">
-       <Label  text="Update manually" />
-       <Button  mnemonicParsing="false" text="Browse data" onAction="#browseData"/>
+    <VBox spacing="10" style="-fx-padding: 0 0 0 0" GridPane.rowIndex="2">
+       <Label text="Update manually" />
+      <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="430.0" spacing="15.0">
+         <children>
+             <Button mnemonicParsing="false" onAction="#browseData" text="Browse data" />
+            <Label fx:id="filename" text="CafeF.SolieuGD.Upto27042020.zip" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#updateData" text="Update" />
+        <ProgressBar fx:id="updateManuallyProgressBar" prefWidth="200.0" progress="0.0" />
     </VBox>
-    <HBox GridPane.rowIndex="3"
-          alignment="BOTTOM_RIGHT" >
-        <Button mnemonicParsing="false" onAction="#gotoSelect" text="Next" />
+    <HBox alignment="BOTTOM_RIGHT" GridPane.rowIndex="3">
+        <Button mnemonicParsing="false" fx:id="nextBtn" onAction="#gotoSelect" text="Next" />
     </HBox>
 </GridPane>

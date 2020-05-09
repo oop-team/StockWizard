@@ -1,6 +1,7 @@
 package modules;
 
 import data.Data;
+import data.Input;
 import data.Session;
 
 import java.text.NumberFormat;
@@ -21,16 +22,9 @@ public class SummaryAAV extends SentenceGenerator {
 
     @Override
     public String generate() {
-        Session[] sessions = new Session[data[0].getSessions().length + data[1].getSessions().length + data[2].getSessions().length];
-        int i = 0;
-        for (Data d : data) {
-            for (Session s : d.getSessions()) {
-                sessions[i++] = s;
-            }
-        }
-        float[] result = calc(sessions);
+        float[] result = calc(Input.inputData[3].getSessions());
         NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VI"));
-        String res;
+        String res = "";
         if (result[0] > 0) {
             res = String.format("So với ngày hôm qua, giá cổ phiếu AAV tăng: %.2f%%, tổng số tiền giao dịch: %s VNĐ, " +
                     "tổng khối lượng giao dịch: %d cổ phiếu", result[0], numberFormat.format(result[2]), (int) result[1]);
@@ -75,5 +69,10 @@ public class SummaryAAV extends SentenceGenerator {
             }
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        Input.updateDataFromLocal("res/sample/data/CafeF.SolieuGD.Upto27042020.zip");
+        System.out.println(new SummaryAAV().generate());
     }
 }

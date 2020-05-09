@@ -2,11 +2,10 @@ package utilities;
 
 import java.io.*;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Dictionary {
-    public static final String[] industryGroups = {
+    public static final String[] INDUSTRY_GROUPS = {
             "Bất động sản",
             "Cao su",
             "Chứng khoán",
@@ -34,7 +33,7 @@ public class Dictionary {
             "Đầu tư xây dựng",
     };
 
-    public static final String[] stockBaskets = {
+    public static final String[] STOCK_BASKETS = {
             "VN30", "HNX30", "BlueChip", "HOT", "PHÒNG THỦ"
     };
 
@@ -46,6 +45,7 @@ public class Dictionary {
      * output: Ngân hàng TMCP Á Châu
      */
     public String getEnterpriseName(String ticker){
+        // TODO:
         return null;
     }
 
@@ -100,7 +100,7 @@ public class Dictionary {
         Dictionary dict = new Dictionary();
 
         // Duyệt tất cả các rổ
-        for(String basketName : stockBaskets){
+        for(String basketName : STOCK_BASKETS){
             String[] tickers = dict.getTickersByStockBasket(basketName);
             System.out.println("- Rổ " + basketName + " gồm: ");
             for(var ticker : tickers){
@@ -112,7 +112,7 @@ public class Dictionary {
         System.out.println();
 
         // Duyệt tất cả các nhóm ngành
-        for(String groupName : industryGroups){
+        for(String groupName : INDUSTRY_GROUPS){
             String[] tickers = dict.getTickersByIndustryGroup(groupName);
             System.out.println("- Nhóm " + groupName + " gồm: ");
             for(var ticker : tickers){

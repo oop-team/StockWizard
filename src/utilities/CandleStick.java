@@ -1,5 +1,15 @@
 package utilities;
 
+import data.Input;
+import data.Session;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static utilities.helper.UtilityHelper.approximatelyEqual;
+
 enum CandleType {
     NONE,
     Black_Body,
@@ -7,41 +17,119 @@ enum CandleType {
     Dragonfly_Doji,
     Hammer,
     Inverted_Hammer,
-    Long_Upper_Shadow,
     Marubozu,
-    Shaven_Head,
     White_Body,
     Gravestone_Doji,
     Hanging_Man,
-    Shooting_Star,
-    Long_Lower_Shadow,
+    Long_Upper_Shadow,
     Spinning_Top,
-    Shaven_Bottom
 }
 
 public class CandleStick {
 
+    /***
+     * Giá mở cửa
+     */
+    private float open;
+
+    /***
+     * Giá đóng cửa
+     */
+    private float close;
+
+    /***
+     * Giá cao nhất trong phiên giao dịch
+     */
+    private float high;
+
+    /***
+     * Giá thấp nhất trong phiên giao dịch
+     */
+    private float low;
+
+    /***
+     * Loại nến
+     */
     private CandleType type;
+
 
     public CandleStick() {
         type = CandleType.NONE;
     }
 
-    public CandleStick(int open, int high, int low, int close) {
+    public CandleStick(float open, float high, float low, float close) {
         type = CandleType.NONE;
         init(open, high, low, close);
-        System.out.println(type.toString());
     }
 
-    public void init(int open, int high, int low, int close) {
-        if (approximatelyEqual(open, close)) {
-            type = CandleType.Doji;
+    public CandleStick(Session session) {
+        type = CandleType.NONE;
+        init(session);
+    }
+
+    public void init(Session session) {
+        init(session.getOpen(), session.getHigh(), session.getLow(), session.getClose());
+    }
+
+    public void init(float open, float high, float low, float close) {
+        this.open = open;
+        this.high = high;
+        this.low = low;
+        this.close = close;
+
+//        /**
+//         *  Get new value attribute of Candle Stick when compare to low
+//         */
+//        open -= low;
+//        high -= low;
+//        low = 0;
+//        close -= low;
+
+        if (approximatelyEqual(open, close ,0.5f)) {
+            setType(CandleType.Doji);
+            if (approximatelyEqual(open, high, 1)
+                    || approximatelyEqual(close, high, 1))
+            {
+                setType(CandleType.Dragonfly_Doji);
+            }
+            else if (approximatelyEqual(open, low, 1)
+                    || approximatelyEqual(close, low, 1))
+            {
+                setType(CandleType.Gravestone_Doji);
+            }
         }
         else if (open < close) {
-            type = CandleType.White_Body;
+            setType(CandleType.White_Body);
+
+            if (approximatelyEqual(open, low, 1)
+                        && approximatelyEqual(close, high, 1))
+            {
+                setType(CandleType.Marubozu);
+            }
+            else if (approximatelyEqual(open, close, 5,10))
+            {
+                if (approximatelyEqual(close, high))
+                    setType(CandleType.Hammer);
+                else if (approximatelyEqual(open, low))
+                    setType(CandleType.Inverted_Hammer);
+            }
+            else if (approximatelyEqual(high, low, 10, 50)) {
+                if (approximatelyEqual(open, close,  5, 10)
+                        && approximatelyEqual(high - close, open - low) ) {
+                    setType(CandleType.Spinning_Top);
+                }
+            }
+
         }
         else if (open > close) {
-            type = CandleType.Black_Body;
+            setType(CandleType.Black_Body);
+            if (approximatelyEqual(open, close, 5, 10))
+            {
+                if (approximatelyEqual(open, high))
+                    setType(CandleType.Hanging_Man);
+                else if (approximatelyEqual(close, low, 5))
+                    setType(CandleType.Long_Upper_Shadow);
+            }
         }
     }
 
@@ -49,15 +137,38 @@ public class CandleStick {
         return type;
     }
 
-    public static boolean approximatelyEqual(float desiredValue, float actualValue) {
-        return approximatelyEqual(desiredValue, actualValue, 10); // default 10% of value higher
+    public void setType(CandleType type) {
+        this.type = type;
     }
 
-    public static boolean approximatelyEqual(float desiredValue, float actualValue, float tolerancePercentage) {
-        float diff = Math.abs(desiredValue - actualValue);
-        // get value to equal from value higher.
-        float tolerance = (desiredValue > actualValue) ? tolerancePercentage/100 * desiredValue : tolerancePercentage/100 * actualValue;
-        return diff < tolerance;
+    public float getOpen() {
+        return open;
+    }
+
+    public float getClose() {
+        return close;
+    }
+
+    public float getHigh() {
+        return high;
+    }
+
+    public float getLow() {
+        return low;
+    }
+
+    public static void main(String[] args) throws ParseException {
+        // Input dữ liệu trước
+        Input.updateDataFromLocal("res/sample/data/CafeF.SolieuGD.Upto27042020.zip");
+
+        // Sử dụng bộ lọc theo nhóm
+        Filter filter = new Filter();
+        String group = Dictionary.INDUSTRY_GROUPS[0];
+        Session[] sessions = filter.filter(Input.inputData[3].getSessions(), group);
+
+        for (var session : sessions) {
+            System.out.println(new CandleStick(session).getType());
+        }
     }
 
 }
