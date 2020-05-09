@@ -22,10 +22,10 @@ public class CountUpAndDown extends SentenceGenerator{
 
     @Override
     public String generate() {
-        Counter counter = new Counter(this.sessions);
-        int[] countHNX = counter.countUpAndDown(data[0]);
-        int[] countHSX = counter.countUpAndDown(data[1]);
-        int[] countUPCOM = counter.countUpAndDown(data[2]);
+        Counter counter = new Counter();
+        int[] countHNX = counter.count(data[0].getSessions());
+        int[] countHSX = counter.count(data[1].getSessions());
+        int[] countUPCOM = counter.count(data[2].getSessions());
 
         int[] count = new int[3];
         for(int i = 0; i < 3; i++){
