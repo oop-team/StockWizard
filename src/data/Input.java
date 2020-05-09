@@ -16,6 +16,7 @@ public class Input {
      * inputData[0]: dữ liệu trên sàn HNX
      * inputData[1]: dữ liệu trên sàn HSX
      * inputData[2]: dữ liệu trên sàn UPCOM
+     * inputData[3]: dữ liệu trên cả 3 sàn (để tiện cho tính toán)
      */
     public static Data[] inputData;
 
@@ -24,7 +25,22 @@ public class Input {
     }
 
     public static void updateDataFromLocal(String filePath){
-        inputData = getDataFromLocal(filePath);
+        Data[] HNX_HSX_UPCOM = getDataFromLocal(filePath);
+
+        // Gộp 3 sàn lại vào inputData[3]
+        inputData = new Data[4];
+        Session[] sessions = new Session[HNX_HSX_UPCOM[0].getSessions().length
+                + HNX_HSX_UPCOM[1].getSessions().length
+                + HNX_HSX_UPCOM[2].getSessions().length];
+        int k = 0;
+        for(int i = 0; i < 3; i++){
+            inputData[i] = HNX_HSX_UPCOM[i];
+            for(var s : inputData[i].getSessions()){
+                sessions[k++] = s;
+            }
+        }
+
+        inputData[3] = new Data(StockExchange.ALL, sessions);
     }
 
     private Data[] getDataFromWeb(String  url){
