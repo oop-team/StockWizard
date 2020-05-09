@@ -24,10 +24,6 @@ public class StockWizard extends Application {
 
     private ScreenController screenController;
 
-    public StockWizard() throws FileNotFoundException {
-
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Display GUI
@@ -63,7 +59,6 @@ public class StockWizard extends Application {
 
     public static void main(String[] args) throws FileNotFoundException {
         launch(args);
-        //new StockWizard();
     }
 
 
