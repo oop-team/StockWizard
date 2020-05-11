@@ -1,11 +1,8 @@
 package modules;
 
-import data.Data;
-import data.Session;
+import utilities.Counter;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Random;
 
 public class UpDownAndNotTrade extends SentenceGenerator {
 
@@ -16,57 +13,19 @@ public class UpDownAndNotTrade extends SentenceGenerator {
 
     @Override
     public String generate() {
-        int[] countHNX = count(data[0]);
-        int[] countHSX = count(data[1]);
-        int[] countUPCOM = count(data[2]);
+        Counter counter = new Counter();
+        int[] countHNX = counter.count(data[0].getSessions());
+        int[] countHSX = counter.count(data[1].getSessions());
+        int[] countUPCOM = counter.count(data[2].getSessions());
 
         int[] count = new int[3];
         for(int i = 0; i < 3; i++){
             count[i] = countHNX[i] + countHSX[i] + countUPCOM[i];
         }
-        return String.format("Hiện có %d mã tăng giá, %d mã giảm giá và %d mã chưa có giao dịch.", count[0], count[1], count[2]);
-    }
-
-    private int[] count(Data data) {
-        int[] ret = new int[3];
-
-        Map<String, Float> map = new HashMap<>();
-
-        Session[] sessions = data.getSessions();
-        Date today = sessions[0].getDate();
-        Date previousDay = null; // Ngày giao dịch trước đó
-
-        // Tìm previousDay
-        for (Session s : sessions){
-            if (!s.getDate().equals(today)){
-                previousDay = s.getDate();
-                break;
-            }
-        }
-
-        for (Session s : sessions) {
-            String ticker = s.getTicker();
-            if(s.getDate().equals(today)){
-                map.put(ticker, s.getClose());
-            }
-            else if (s.getDate().equals(previousDay)){
-                if (map.containsKey(ticker)) {
-                    float close = s.getClose();
-                    float newClose = map.get(ticker);
-                    if (newClose - close > 0) {
-                        ret[0] +=1;
-                    } else if (newClose - close < 0) {
-                        ret[1] +=1;
-                    }
-                }
-                else{
-                    ret[2] += 1;
-                }
-            }
-            else{
-                break;
-            }
-        }
-        return ret;
+        String[] ret = new String[3];
+        ret[0] = String.format("Hiện có %d mã tăng giá, %d mã giảm giá và %d mã chưa có giao dịch.", count[0], count[1], count[2]);
+        ret[1] = String.format("Toàn thị trường có %d mã tăng, %d mã giảm và %d mã không giao dịch", count[0], count[1], count[2]);
+        ret[2] = String.format("Số mã tăng: %d mã, số mã giảm: %d mã, số mã không giao dịch: %d mã", count[0], count[1], count[2]);
+        return ret[new Random().nextInt(3)];
     }
 }

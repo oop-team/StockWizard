@@ -11,6 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import data.Data;
 import modules.*;
+import utilities.CandleStick;
 
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
@@ -22,10 +23,6 @@ public class StockWizard extends Application {
     public static Stage primaryStage;
 
     private ScreenController screenController;
-
-    public StockWizard() throws FileNotFoundException {
-
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -62,7 +59,6 @@ public class StockWizard extends Application {
 
     public static void main(String[] args) throws FileNotFoundException {
         launch(args);
-        //new StockWizard();
     }
 
 

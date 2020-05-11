@@ -3,42 +3,65 @@ package app.controller;
 import app.StockWizard;
 import app.controller.helper.Mediator;
 import data.Input;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javafx.fxml.FXML;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.stage.FileChooser;
-import modules.CountUpAndDown;
-import modules.MaxIncreasePercent;
-import modules.SentenceGenerator;
-import modules.UpDownAndNotTrade;
 
-public class UpdateData {
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class UpdateData implements Initializable {
+
+    private File selectedFile;
 
     @FXML
-    public void gotoSelect(ActionEvent event) {
+    private Label filename;
+    @FXML
+    private ProgressBar updateManuallyProgressBar;
+    @FXML
+    private Button nextBtn;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        filename.setText("Not selected");
+        nextBtn.setDisable(true);
+    }
+
+    @FXML
+    private void gotoSelect(ActionEvent event) {
         Mediator.Notify("onGoingSelectSentence");
     }
 
     @FXML
-    public void browseData(ActionEvent event) {
-        try
-        {
-            FileChooser fileChooser = new FileChooser();
-            File file = fileChooser.showOpenDialog(StockWizard.primaryStage);
-
-            Input.updateDataFromLocal(file.getAbsolutePath());
-        }
-        catch(Exception e) {
-            System.out.println("BrowsData Ex: " + e.getMessage());
+    private void browseData(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        selectedFile = fileChooser.showOpenDialog(StockWizard.primaryStage);
+        if (selectedFile.exists()){
+            filename.setText(selectedFile.getName());
         }
     }
 
     @FXML
-    public void downloadData(ActionEvent event) {
+    private void updateData(ActionEvent event){
+        new Thread(() -> {
+            Input.updateDataFromLocal(selectedFile.getAbsolutePath());
+            Platform.runLater(() -> {
+                updateManuallyProgressBar.setProgress(1);
+                nextBtn.setDisable(false);
+            });
+        }).start();
+
+        updateManuallyProgressBar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
+    }
+
+    @FXML
+    private void downloadData(ActionEvent event) {
 
     }
 }

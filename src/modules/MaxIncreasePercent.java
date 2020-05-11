@@ -3,10 +3,12 @@ package modules;
 import data.Data;
 import data.Session;
 import data.StockExchange;
+import utilities.Dictionary;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class MaxIncreasePercent extends SentenceGenerator{
 
@@ -18,7 +20,7 @@ public class MaxIncreasePercent extends SentenceGenerator{
     @Override
     public String generate() {
         String maxTicker = "";
-        Float maxPercent = 0f;
+        float maxPercent = 0f;
 
         // Duyệt trên cả 3 sàn, tìm ra mã có phần trăm tăng cao nhất
         for(int i = 0; i < 3; i++){
@@ -57,7 +59,13 @@ public class MaxIncreasePercent extends SentenceGenerator{
             }
         }
 
-        return String.format("Hôm nay, mã %s tăng mạnh nhất với %f %%", maxTicker, maxPercent);
+        String[] ret = new String[3];
+        ret[0] = String.format("Hôm nay, mã %s tăng mạnh nhất với %f %%", maxTicker, maxPercent);
+        ret[1] = String.format("Kết thúc phiên giao dịch ngày hôm nay, mã %s tăng mạnh nhất với %f %%", maxTicker, maxPercent);
+        ret[2] = String.format("Hôm nay, mã %s (%s) tăng mạnh nhất với %f %%",
+                maxTicker, new Dictionary().getEnterpriseName(maxTicker), maxPercent);
+
+        return ret[new Random().nextInt(3)];
     }
 
 
