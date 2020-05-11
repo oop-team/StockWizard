@@ -2,6 +2,8 @@ package utilities;
 
 import java.io.*;
 import java.util.Arrays;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Dictionary {
@@ -38,14 +40,25 @@ public class Dictionary {
     };
 
     /**
-     * Tên doanh nghiệp ứng với mã cổ phiếu => Tân
      *
-     * Ví dụ:
-     * input: "ACB"
-     * output: Ngân hàng TMCP Á Châu
+     * @param ticker
+     * @return Tên doanh nghiệp
      */
     public String getEnterpriseName(String ticker){
-        // TODO:
+        try{
+            Scanner scanner = new Scanner(new File("res/general_information/enterprise name.txt"));
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] str = line.split("\t", 2);
+                if (str[0].equals(ticker)){
+                    return str[1];
+                }
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Mã cổ phiếu không tồn tại");
         return null;
     }
 
@@ -100,10 +113,10 @@ public class Dictionary {
         Dictionary dict = new Dictionary();
 
         // Duyệt tất cả các rổ
-        for(String basketName : STOCK_BASKETS){
+        for (String basketName : STOCK_BASKETS) {
             String[] tickers = dict.getTickersByStockBasket(basketName);
             System.out.println("- Rổ " + basketName + " gồm: ");
-            for(var ticker : tickers){
+            for (var ticker : tickers) {
                 System.out.print(ticker + ", ");
             }
             System.out.println();
@@ -112,13 +125,16 @@ public class Dictionary {
         System.out.println();
 
         // Duyệt tất cả các nhóm ngành
-        for(String groupName : INDUSTRY_GROUPS){
+        for (String groupName : INDUSTRY_GROUPS) {
             String[] tickers = dict.getTickersByIndustryGroup(groupName);
             System.out.println("- Nhóm " + groupName + " gồm: ");
-            for(var ticker : tickers){
+            for (var ticker : tickers) {
                 System.out.print(ticker + ", ");
             }
             System.out.println();
         }
+
+        // Ví dụ lấy tên doanh nghiệp có mã AAM
+        System.out.println(dict.getEnterpriseName("AAM"));
     }
 }
