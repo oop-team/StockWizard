@@ -2,11 +2,13 @@ package modules;
 
 import data.Input;
 import data.Session;
+import utilities.Dictionary;
 import utilities.Filter;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class GroupDepreciation extends SentenceGenerator{
 
@@ -17,14 +19,16 @@ public class GroupDepreciation extends SentenceGenerator{
 
     @Override
     public String generate() {
-        return null;
+        Random r = new Random();
+        String randomGroup = Dictionary.INDUSTRY_GROUPS[r.nextInt(Dictionary.INDUSTRY_GROUPS.length)];
+        int randomStockExchange = r.nextInt(4);
+        return generate(randomStockExchange, randomGroup);
     }
 
     /***
      * Sinh ra câu có những mã giảm trên sàn stockExchange thuộc nhóm ngành group
      */
     public String generate(int stockExchange, String group) {
-        Input.updateDataFromLocal("D:\\ACE\\CafeF.SolieuGD.Upto28042020.zip");
         Filter filter = new Filter();
         Session[] sessions = filter.filter(Input.inputData[stockExchange].getSessions(), group);
         String[] tickers = new String[400];
@@ -79,6 +83,7 @@ public class GroupDepreciation extends SentenceGenerator{
     }
 
     public static void main(String[] args) {
+        Input.updateDataFromLocal("res/sample/data/CafeF.SolieuGD.Upto27042020.zip");
         GroupDepreciation s = new GroupDepreciation();
         System.out.println(s.generate(0, "Dầu khí"));
     }
