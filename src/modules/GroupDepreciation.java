@@ -14,7 +14,7 @@ public class GroupDepreciation extends SentenceGenerator{
 
     @Override
     public String example() {
-        return "Dầu khí trên sàn UPCOM, những mã dầu khí như OIL, BSR đồng loạt giảm sâu trong phiên hôm nay.";
+        return "Trên sàn UPCOM, những mã dầu khí như OIL, BSR đồng loạt giảm sâu trong phiên hôm nay.";
     }
 
     @Override
@@ -31,8 +31,9 @@ public class GroupDepreciation extends SentenceGenerator{
     public String generate(int stockExchange, String group) {
         Filter filter = new Filter();
         Session[] sessions = filter.filter(Input.inputData[stockExchange].getSessions(), group);
-        String[] tickers = new String[400];
-        int numberOfTickers = 0;
+        String ticker1 = new String();
+        String ticker2 = new String();
+        float percentReduction1 = 0, percentReduction2 = 0;
         Map<String, Float> map = new HashMap<>();
 
         Date today = sessions[0].getDate();
@@ -53,32 +54,40 @@ public class GroupDepreciation extends SentenceGenerator{
                 map.put(ticker, s.getClose());
             }
             else if (s.getDate().equals(previousDay)){
-                    if (map.containsKey(ticker)) {
-                        float close = s.getClose();
-                        float newClose = map.get(ticker);
-                        if (newClose - close < 0) {
-                            tickers[numberOfTickers++] = ticker;
+                if (map.containsKey(ticker)) {
+                    float percentReduction = (s.getClose() - map.get(ticker))/s.getClose();
+                    if(percentReduction > percentReduction2){
+                        percentReduction2 = percentReduction;
+                        ticker2 = ticker;
+                        if(percentReduction > percentReduction1){
+                            percentReduction2 = percentReduction1;
+                            ticker2 = ticker1;
+                            percentReduction1 = percentReduction;
+                            ticker1 = ticker;
                         }
                     }
+                }
             }
             else{
                 break;
             }
         }
 
-
-        String s = group + " trên ";
+        String s = "Trên ";
         switch (stockExchange){
             case 0: s += "sàn HNX"; break;
             case 1: s += "sàn HSX"; break;
             case 2: s += "sàn UPCOM"; break;
             case 3: s += "cả ba sàn";
         }
-        s += ", những mã dầu khí như ";
-        for(int i = 0; i < numberOfTickers - 1; i++){
-            s += tickers[i] + ", ";
+        if(!ticker2.isEmpty()){
+            s += ", những mã " + group.toLowerCase() + " như " + ticker1 + ", " + ticker2 + " đồng loạt giảm sâu trong phiên hôm nay.";
+        }else{
+            if(ticker1.isEmpty()){
+                return s + ", không có mã " + group.toLowerCase() + " nào giảm trong phiên hôm nay.";
+            }
+            s += ", mã " + ticker1 + " thuộc nhóm " + group.toLowerCase() + " giảm sâu trong phiên hôm nay";
         }
-        s += tickers[numberOfTickers-1] + " đồng loạt giảm sâu trong phiên hôm nay.";
         return s;
     }
 
