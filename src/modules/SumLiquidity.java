@@ -37,10 +37,10 @@ public class SumLiquidity extends SentenceGenerator {
             }
         }
         if (sumtoday > sumpsday) {
-            return "Kết thúc phiên giao dịch ngày hôm nay thanh khoản của thị trường lên tới" + sumtoday +
-                    "tăng" + (sumtoday - sumpsday) + "đơn vị so với ngày hôm qua.";
-        } else return "Kết thúc phiên giao dịch ngày hôm nay thanh khoản của thị trường lên tới" + sumtoday +
-                "nhưng vẫn giảm" + (sumpsday - sumtoday) + "đơn vị so với ngày hôm qua.";
+            return "Kết thúc phiên giao dịch ngày hôm nay thanh khoản của thị trường lên tới " + sumtoday +
+                    " tăng " + (sumtoday - sumpsday) + " đơn vị so với ngày hôm qua.";
+        } else return "Kết thúc phiên giao dịch ngày hôm nay thanh khoản của thị trường lên tới " + sumtoday +
+                " nhưng vẫn giảm " + (sumpsday - sumtoday) + " đơn vị so với ngày hôm qua.";
 
     }
 }
