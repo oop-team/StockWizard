@@ -56,6 +56,7 @@ public class SelectTemplate implements Initializable {
         modules.add(new Liquidity());
         modules.add(new SumHNXandHSX());
         modules.add(new SumLiquidity());
+        modules.add(new CountExisting());
         int id = 0;
         for (var module : modules){
             listSentences.add(new Output(id++,module));
