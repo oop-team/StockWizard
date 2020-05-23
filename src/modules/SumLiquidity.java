@@ -12,8 +12,8 @@ public class SumLiquidity extends SentenceGenerator {
 
     @Override
     public String generate() {
-        int sumtoday = 0;
-        int sumpsday = 0;
+        long sumtoday = 0;
+        long sumpsday = 0;
 
         for (int i = 0; i < 3; i++) {
 
@@ -29,8 +29,9 @@ public class SumLiquidity extends SentenceGenerator {
             }
 
             for (Session s : sessions) {
-                sumtoday += s.getVolume();
+                
                 if (s.getDate().equals(today)) {
+                	sumtoday += s.getVolume();
                 } else if (s.getDate().equals(previousDay)) {
                     sumpsday += s.getVolume();
                 }
