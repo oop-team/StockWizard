@@ -262,7 +262,6 @@ public class FileHelper {
 				datas.add(newData);
 			}
 			
-			this.removeFiles();
 		}
 		
 		
@@ -276,9 +275,20 @@ public class FileHelper {
 	}
 	
 	public ArrayList<Data> scanFileByUrl(String url){
-		String downloadPath = this.downloadFile(url, this.getFileNameFromUrl(url));
 		
-		this.log("DOwnload Path "+ downloadPath);
+		String fileNameString = this.getFileNameFromUrl(url);
+		
+		File file = new File(DOWNLOAD_FOLDER_NAME + fileNameString);
+		String downloadPath ;
+		if(file.exists()) {
+			downloadPath = DOWNLOAD_FOLDER_NAME + fileNameString;
+			System.out.println("FILE EXIST");
+		}else {
+			this.removeFiles();
+			downloadPath = this.downloadFile(url, fileNameString);
+		}
+		 
+
 		return this.scanFile(downloadPath);
 	}
 }

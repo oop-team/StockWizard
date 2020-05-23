@@ -27,7 +27,7 @@
       <Separator prefWidth="200.0" />
        <Label text="Update automatically" />
        <Button mnemonicParsing="false" onAction="#downloadData" text="Update" />
-      <ProgressBar prefWidth="200.0" progress="0.0" />
+      <ProgressBar fx:id="automaticProgressBar" prefWidth="200.0" progress="0.0" />
       <Separator prefWidth="200.0" />
     </VBox>
     <VBox spacing="10" style="-fx-padding: 0 0 0 0" GridPane.rowIndex="2">

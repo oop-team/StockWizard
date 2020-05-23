@@ -7,6 +7,7 @@ import utilities.Counter;
 
 import java.util.*;
 
+
 /***
  * Đếm số mã tăng, mã giảm và mã đứng giá trên toàn thị trường
  * Ý tưởng thực hiện:
@@ -26,6 +27,10 @@ public class CountUpAndDown extends SentenceGenerator{
         int[] countHNX = counter.count(data[0].getSessions());
         int[] countHSX = counter.count(data[1].getSessions());
         int[] countUPCOM = counter.count(data[2].getSessions());
+        
+        System.out.print(countHNX);
+        System.out.print(countHSX);
+        System.out.print(countUPCOM);
 
         int[] count = new int[3];
         for(int i = 0; i < 3; i++){

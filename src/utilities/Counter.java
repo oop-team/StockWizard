@@ -2,9 +2,11 @@ package utilities;
 
 import data.Session;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * Đếm số mã tăng, giảm, đứng giá, không giao dịch => Nhật
@@ -34,6 +36,17 @@ public class Counter {
                 break;
             }
         }
+        
+        if(previousDay == null) {
+        	// Get previousday :)))
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(today);
+            calendar.add(Calendar.DATE, -1);
+            previousDay = calendar.getTime();
+        }
+        
+        System.out.println(previousDay);
+        System.out.println(today);
 
         for (Session s : sessions) {
             String ticker = s.getTicker();
