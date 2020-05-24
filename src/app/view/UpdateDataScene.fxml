@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane hgap="10" prefHeight="450" prefWidth="450" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.UpdateData">
+<GridPane hgap="10" prefHeight="450" prefWidth="450" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.UpdateDataSceneController">
     <padding>
       <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
@@ -25,9 +26,9 @@
     </Label>
     <VBox GridPane.rowIndex="1" prefHeight="159.0" prefWidth="430.0" spacing="10" style="-fx-padding: 0 0 0 0" >
       <Separator prefWidth="200.0" />
-       <Label text="Update automatically" />
-       <Button fx:id="updateAutoBtn" mnemonicParsing="false" onAction="#downloadData" text="Update" />
-      <ProgressBar fx:id="updateAutoProgressBar" prefWidth="200.0" progress="0.0" />
+        <Label text="Update automatically" />
+        <Button fx:id="updateAutoBtn" mnemonicParsing="false" onAction="#downloadData" text="Update" />
+        <ProgressBar fx:id="automaticProgressBar" prefWidth="200.0" progress="0.0" />
       <Separator prefWidth="200.0" />
     </VBox>
     <VBox spacing="10" prefHeight="220" style="-fx-padding: 0 0 0 0" GridPane.rowIndex="2">

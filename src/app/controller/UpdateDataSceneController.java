@@ -27,7 +27,7 @@ public class UpdateDataSceneController implements Initializable {
     @FXML
     private ProgressBar updateManuallyProgressBar;
     @FXML
-    private ProgressBar updateAutoProgressBar;
+    private ProgressBar automaticProgressBar;
     @FXML
     private Button nextBtn;
     @FXML
@@ -41,7 +41,7 @@ public class UpdateDataSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (Input.inputData != null) {
             if (Input.isUpdateByAuto)
-                updateAutoProgressBar.setProgress(1);
+                automaticProgressBar.setProgress(1);
             else
                 updateManuallyProgressBar.setProgress(1);
             nextBtn.setDisable(false);
@@ -55,18 +55,17 @@ public class UpdateDataSceneController implements Initializable {
 
     @FXML
     private void browseData(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extensionFilter =
+                new FileChooser.ExtensionFilter("Compress file | Data file",
+                        "*.zip", "*.rar", "*.txt", "*.csv");
+        fileChooser.getExtensionFilters().add(extensionFilter);
 
-            FileChooser fileChooser = new FileChooser();
-            FileChooser.ExtensionFilter extensionFilter =
-                    new FileChooser.ExtensionFilter("Compress file | Data file",
-                            "*.zip", "*.rar", "*.txt", "*.csv");
-            fileChooser.getExtensionFilters().add(extensionFilter);
-
-            selectedFile = fileChooser.showOpenDialog(StockWizard.primaryStage);
-            if (selectedFile != null && selectedFile.exists()){
-                filename.setText(selectedFile.getName());
-                updateManuallyBtn.setDisable(false);
-            }
+        selectedFile = fileChooser.showOpenDialog(StockWizard.primaryStage);
+        if (selectedFile != null && selectedFile.exists()){
+            filename.setText(selectedFile.getName());
+            updateManuallyBtn.setDisable(false);
+        }
     }
 
     @FXML
@@ -95,6 +94,14 @@ public class UpdateDataSceneController implements Initializable {
 
     @FXML
     private void downloadData(ActionEvent event) {
+        new Thread(()->  {
+            Input.updateDataFromWeb();
+            Platform.runLater(()->{
+                automaticProgressBar.setProgress(1);
+                nextBtn.setDisable(false);
+            });
+        }).start();
 
+        automaticProgressBar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
     }
 }

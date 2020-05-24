@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<GridPane prefHeight="450" prefWidth="450" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SelectTemplate">
+<GridPane prefHeight="450" prefWidth="450" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SelectSceneController">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" prefWidth="300" percentWidth="100" />
    </columnConstraints>

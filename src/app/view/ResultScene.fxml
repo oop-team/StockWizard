@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="app.controller.ResultScene"
+          fx:controller="app.controller.ResultSceneController"
           prefHeight="450.0" prefWidth="450.0">
     <columnConstraints>
         <ColumnConstraints hgrow="ALWAYS" prefWidth="300" percentWidth="100" />
