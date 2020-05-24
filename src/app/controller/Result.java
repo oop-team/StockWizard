@@ -24,7 +24,7 @@ public class Result implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String text = new String();
         for(var item : SelectTemplate.getInstance().getListSentences()) {
-            text += item.getSelected() ? item.getSentenceGenerator().generate() + "\n" : "";
+            text += item.isSelected() ? item.getSentenceGenerator().generate() + "\n" : "";
         }
         resultTextArea.setText(text);
     }

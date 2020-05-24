@@ -18,13 +18,16 @@ public class Input {
      * inputData[2]: dữ liệu trên sàn UPCOM
      * inputData[3]: dữ liệu trên cả 3 sàn (để tiện cho tính toán)
      */
+    public static boolean isUpdateByAuto;
     public static Data[] inputData;
 
     public void updateDataFromWeb(String url){
+        isUpdateByAuto = true;
         inputData = getDataFromWeb(url);
     }
 
     public static void updateDataFromLocal(String filePath){
+        isUpdateByAuto = false;
         Data[] HNX_HSX_UPCOM = getDataFromLocal(filePath);
 
         // Gộp 3 sàn lại vào inputData[3]

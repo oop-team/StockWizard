@@ -1,26 +1,42 @@
 package data;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.CheckBox;
 import modules.SentenceGenerator;
 
 public class Output {
 
     private int id;
-    private CheckBox checkBox;
     private SentenceGenerator sentenceGenerator;
+    private SimpleBooleanProperty selected = new SimpleBooleanProperty(false);
     private SimpleStringProperty sentence;
 
     public Output() {
         this.id = 0;
-        this.checkBox = new CheckBox();
         this.sentence = new SimpleStringProperty("");
     }
 
     public Output(int id, String sentence) {
         this.id = id;
-        this.checkBox = new CheckBox();
         this.sentence = new SimpleStringProperty(sentence);
+    }
+
+    public Output(int id, SentenceGenerator sentenceGenerator) {
+        this.id = id;
+        this.sentenceGenerator = sentenceGenerator;
+        this.sentence = new SimpleStringProperty(sentenceGenerator.example());
+    }
+
+    public boolean isSelected() {
+        return selected.get();
+    }
+
+    public SimpleBooleanProperty selectedProperty() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected.set(selected);
     }
 
     public SentenceGenerator getSentenceGenerator() {
@@ -29,13 +45,6 @@ public class Output {
 
     public void setSentenceGenerator(SentenceGenerator sentenceGenerator) {
         this.sentenceGenerator = sentenceGenerator;
-    }
-
-    public Output(int id, SentenceGenerator sentenceGenerator) {
-        this.id = id;
-        this.checkBox = new CheckBox();
-        this.sentenceGenerator = sentenceGenerator;
-        this.sentence = new SimpleStringProperty(sentenceGenerator.example());
     }
 
     public int getId() {
@@ -51,18 +60,6 @@ public class Output {
     }
 
     public void setSentence(String sentence) {
-        this.sentence = new SimpleStringProperty(sentence);
-    }
-
-    public CheckBox getCheckBox() {
-        return this.checkBox;
-    }
-
-    public void setheckBox(CheckBox checkBox) {
-        this.checkBox = checkBox;
-    }
-
-    public boolean getSelected() {
-        return this.checkBox.isSelected();
+        this.sentence.set(sentence);
     }
 }

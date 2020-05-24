@@ -2,12 +2,18 @@ package app.controller;
 
 import app.controller.helper.Mediator;
 import data.Output;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import modules.*;
 
 import java.net.URL;
@@ -23,6 +29,10 @@ public class SelectTemplate implements Initializable {
 
     @FXML
     private TableView tableView = new TableView();
+    @FXML
+    private TableColumn<Output, String> sentenceColumn;
+    @FXML
+    private TableColumn<Output, Boolean> checkBoxColumn;
 
     private static SelectTemplate instance;
 
@@ -58,8 +68,14 @@ public class SelectTemplate implements Initializable {
         modules.add(new SumLiquidity());
         int id = 0;
         for (var module : modules){
-            listSentences.add(new Output(id++,module));
+            Output output = new Output(id++, module);
+            listSentences.add(output);
         }
+        checkBoxColumn.setCellFactory(CheckBoxTableCell.forTableColumn(checkBoxColumn));
+        checkBoxColumn.setCellValueFactory(new PropertyValueFactory<>("selected"));
+        checkBoxColumn.setEditable(true);
+
+        sentenceColumn.setCellValueFactory(new PropertyValueFactory<Output, String>("sentence"));
         tableView.getItems().addAll(listSentences);
     }
 
