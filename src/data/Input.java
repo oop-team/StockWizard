@@ -21,11 +21,6 @@ public class Input {
     public static boolean isUpdateByAuto;
     public static Data[] inputData;
 
-    public void updateDataFromWeb(String url){
-        isUpdateByAuto = true;
-        inputData = getDataFromWeb(url);
-    }
-
     public static void updateDataFromLocal(String filePath){
         isUpdateByAuto = false;
         Data[] HNX_HSX_UPCOM = getDataFromLocal(filePath);
@@ -47,6 +42,7 @@ public class Input {
     }
     
     public static void updateDataFromWeb() {
+        isUpdateByAuto = true;
         Data[] HNX_HSX_UPCOM = getDataFromWeb("https://s.cafef.vn/du-lieu/download.chn");
         // Gộp 3 sàn lại vào inputData[3]
         inputData = new Data[4];
