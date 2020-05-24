@@ -1,10 +1,7 @@
 package app.controller;
 
 import app.controller.helper.Mediator;
-import data.Output;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
+import model.Output;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 import modules.*;
 
 import java.net.URL;
@@ -21,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class SelectTemplate implements Initializable {
+public class SelectSceneController implements Initializable {
 
     private List<SentenceGenerator> modules;
 
@@ -34,11 +30,11 @@ public class SelectTemplate implements Initializable {
     @FXML
     private TableColumn<Output, Boolean> checkBoxColumn;
 
-    private static SelectTemplate instance;
+    private static SelectSceneController instance;
 
-    public static SelectTemplate getInstance() {
+    public static SelectSceneController getInstance() {
         if (instance == null)
-            return new SelectTemplate();
+            return new SelectSceneController();
         return instance;
     }
 
@@ -50,12 +46,8 @@ public class SelectTemplate implements Initializable {
         return listSentences;
     }
 
-    public SelectTemplate() {
+    public SelectSceneController() {
         instance = this;
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
         listSentences = FXCollections.<Output>observableArrayList();
         modules = new ArrayList<>();
         modules.add(new UpDownAndNotTrade());
@@ -71,11 +63,14 @@ public class SelectTemplate implements Initializable {
             Output output = new Output(id++, module);
             listSentences.add(output);
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         checkBoxColumn.setCellFactory(CheckBoxTableCell.forTableColumn(checkBoxColumn));
         checkBoxColumn.setCellValueFactory(new PropertyValueFactory<>("selected"));
-        checkBoxColumn.setEditable(true);
+        sentenceColumn.setCellValueFactory(new PropertyValueFactory<>("sentence"));
 
-        sentenceColumn.setCellValueFactory(new PropertyValueFactory<Output, String>("sentence"));
         tableView.getItems().addAll(listSentences);
     }
 

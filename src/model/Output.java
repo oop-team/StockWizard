@@ -8,7 +8,7 @@ public class Output {
 
     private int id;
     private SentenceGenerator sentenceGenerator;
-    private SimpleBooleanProperty selected = new SimpleBooleanProperty(false);
+    private SimpleBooleanProperty selected = new SimpleBooleanProperty(true);
     private SimpleStringProperty sentence;
 
     public Output() {

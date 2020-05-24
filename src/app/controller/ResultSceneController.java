@@ -11,20 +11,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class Result implements Initializable {
+public class ResultSceneController implements Initializable {
 
     @FXML
     private TextArea resultTextArea = new TextArea();
 
-    public Result() {
+    public ResultSceneController() {
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String text = new String();
-        for(var item : SelectTemplate.getInstance().getListSentences()) {
-            text += item.isSelected() ? item.getSentenceGenerator().generate() + "\n" : "";
+        for(var item : SelectSceneController.getInstance().getListSentences()) {
+            text += item.isSelected() ? "- " + item.getSentenceGenerator().generate() + "\n" : "";
         }
         resultTextArea.setText(text);
     }
