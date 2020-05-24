@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane hgap="10" prefHeight="450" prefWidth="450" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.UpdateDataSceneController">
+    <padding>
+      <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" percentWidth="100" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints prefHeight="75.0" />
+        <RowConstraints maxHeight="130" minHeight="105" prefHeight="115" />
+        <RowConstraints maxHeight="200" minHeight="105" prefHeight="170" />
+        <RowConstraints minHeight="27.0" prefHeight="35.0" vgrow="ALWAYS" />
+    </rowConstraints>
+    <Label alignment="TOP_CENTER" text="Update data" GridPane.rowIndex="0">
+       <font>
+          <Font size="25.0" />
+       </font>
+    </Label>
+    <VBox GridPane.rowIndex="1" prefHeight="159.0" prefWidth="430.0" spacing="10" style="-fx-padding: 0 0 0 0" >
+      <Separator prefWidth="200.0" />
+        <Label text="Update automatically" />
+        <Button fx:id="updateAutoBtn" mnemonicParsing="false" onAction="#downloadData" text="Update" />
+        <ProgressBar fx:id="automaticProgressBar" prefWidth="200.0" progress="0.0" />
+      <Separator prefWidth="200.0" />
+    </VBox>
+    <VBox spacing="10" prefHeight="220" style="-fx-padding: 0 0 0 0" GridPane.rowIndex="2">
+        <Label text="Update manually" />
+        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="430.0" spacing="15.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#browseData" text="Browse data" />
+            <Label fx:id="filename" text="Not selected" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+        </HBox>
+        <Button fx:id="updateManuallyBtn" disable="true" mnemonicParsing="false" onAction="#updateData" text="Update" />
+        <ProgressBar fx:id="updateManuallyProgressBar" prefWidth="200.0" progress="0.0" />
+    </VBox>
+    <HBox alignment="BOTTOM_RIGHT" GridPane.rowIndex="3">
+        <Button mnemonicParsing="false" fx:id="nextBtn" onAction="#gotoSelect" text="Next" disable="true" />
+    </HBox>
+</GridPane>
