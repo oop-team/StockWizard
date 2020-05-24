@@ -1,4 +1,4 @@
-package data;
+package model;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;

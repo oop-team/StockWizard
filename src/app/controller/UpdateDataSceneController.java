@@ -18,7 +18,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UpdateData implements Initializable {
+public class UpdateDataSceneController implements Initializable {
 
     private File selectedFile;
 
@@ -33,7 +33,7 @@ public class UpdateData implements Initializable {
     @FXML
     private Button updateManuallyBtn;
 
-    public UpdateData() {
+    public UpdateDataSceneController() {
 
     }
 
@@ -85,6 +85,7 @@ public class UpdateData implements Initializable {
             catch (Exception e) {
                 Platform.runLater(() -> {
                     updateManuallyProgressBar.setProgress(0);
+                    nextBtn.setDisable(true);
                 });
             }
         }).start();
