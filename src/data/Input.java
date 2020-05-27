@@ -11,6 +11,7 @@ import service.FileHelper;
 
 public class Input {
 
+    public static boolean isUpdateByAuto;
     /***
      * Dữ liệu sau khi được cập nhật lưu vào đây
      * inputData[0]: dữ liệu trên sàn HNX
@@ -18,7 +19,6 @@ public class Input {
      * inputData[2]: dữ liệu trên sàn UPCOM
      * inputData[3]: dữ liệu trên cả 3 sàn (để tiện cho tính toán)
      */
-    public static boolean isUpdateByAuto;
     public static Data[] inputData;
 
     public static void updateDataFromLocal(String filePath){
