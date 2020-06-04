@@ -99,3 +99,34 @@ Trên sàn Upcom, những mã dầu khí như OIL, BSR đồng loạt giảm sâ
 16.	VCS đã tăng giá ngay từ đầu phiên và đóng cửa tăng 8,7%.
 17.	Trong tháng qua, giá cổ phiếu PAC đã tăng 25%.
 18.	Chỉ có 2 mã giảm trong tháng qua là HGM giảm 11,1% và SGC giảm 31,6%.
+
+## Tuần 4
+Tiếp tục hoàn thành công việc của tuần 3
+
+## Tuần 5
+- Bao gồm các công việc chưa hoàn thành của tuần trước
+    + Hiếu: Thiếu 2 mô-đun
+    + Đạt: Thiếu 2 mô-đun
+    + Cao: Chưa xử lí auto-update
+    
+- Thêm các công việc của tuần này:
+    + Nhật: Thêm 2 mô-đun
+    + Hiếu: Thêm 2 mô-đun
+    + Đạt: Thêm 2 mô-đun
+    + Tân: Thêm 2 mô-đun
+    + Cao: Thêm 1 mô-đun và làm tính năng save lại result dưới file text.
+    + Hùng: Tinh chỉnh lại GUI, test để tìm và sửa các lỗi lặt vặt. Ví dụ như chọn file không đúng, chưa chọn file đã nhấn update.
+    Next rồi back lại ko lưu data. Đặt lại kích thước cho hợp lý. Ở phần result, thêm gạch đầu dòng hoặc xuống dòng để tách biệt các câu.
+    
+- Mẫu câu về nến:
+    + Có 8 rising window tăng trong 50 cây nến.
+    + chỉ số VN-Idex xuất hiện mô hình nến Shooting Star và các chỉ báo xung lượng giảm dần từ vùng quá mua cho thấy đồ thị giá có thể 
+    sẽ điều chỉnh trong tuần giao dịch tới đặc biệt với nhóm cổ phiếu đã tăng mạnh là nhóm blue-chips như VIC, VCB, HPG, BVH...
+    + Hiện tại VN30 Index trên thị trường cơ sở đã thể hiện trạng thái tiêu cực quá mức trong những phiên giao dịch trước đó tuy nhiên vào 
+    cuối phiên ngày hôm nay yếu tố mẫu nến Dragonfly Doji xuất hiện cho thấy nhà đầu tư vẫn đang kỳ vọng vào kịch bản hồi phục sớm trở lại 
+    của VN30 Index trong thời gian tới đây.
+    + Gần đây, VN-Index cũng thường hụt cầu ở mức giá xanh dù phiên trước có tín hiệu đảo chiều của nến.
+    + VN-Index tăng điểm khá nhẹ nhàng và thiết lập mức cao mới tại 821 điểm với nến marobuzu không có bóng nến.
+    + Chỉ số HNX-Index thiết lập cột nến có bóng dưới dài, cho thấy sự phục hồi đáng kể từ mức thấp nhất.
+    + HNX-Index một lần nữa bị bán mạnh vào cuối giờ và xuất hiện mẫu hình nến giảm giá “Gravestone Doji”.
+    + VN-Index hôm nay giao dịch tạo thành cây nến ngắn màu đỏ giống với mẫu nến Doji.

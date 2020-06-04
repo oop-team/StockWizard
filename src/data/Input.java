@@ -42,8 +42,27 @@ public class Input {
 
         inputData[3] = new Data(StockExchange.ALL, sessions);
     }
+    
+    public static void updateDataFromWeb() {
+        Data[] HNX_HSX_UPCOM = getDataFromWeb("https://s.cafef.vn/du-lieu/download.chn");
+        // Gộp 3 sàn lại vào inputData[3]
+        inputData = new Data[4];
+        Session[] sessions = new Session[HNX_HSX_UPCOM[0].getSessions().length
+                + HNX_HSX_UPCOM[1].getSessions().length
+                + HNX_HSX_UPCOM[2].getSessions().length];
+        int k = 0;
+        for(int i = 0; i < 3; i++){
+            inputData[i] = HNX_HSX_UPCOM[i];
+            System.out.print(""+ inputData[i].getStockExchange() + inputData[i].getSessions().length);
+            for(var s : inputData[i].getSessions()){
+                sessions[k++] = s;
+            }
+        }
 
-    private Data[] getDataFromWeb(String  url){
+        inputData[3] = new Data(StockExchange.ALL, sessions);
+    }
+
+    private static Data[] getDataFromWeb(String  url){
         Crawler crawler = Crawler.getInstance();
         FileHelper fileHelper = FileHelper.getInstance();
         ArrayList<Data> datasFromWeb = new ArrayList<Data>();
@@ -51,19 +70,13 @@ public class Input {
         ArrayList<String> downloadLinks = crawler.crawlDownloadLink(url);
         
         if(downloadLinks.size()>0) {
-        	datasFromWeb = fileHelper.scanFileByUrl(downloadLinks.get(0));
-        	
+        	datasFromWeb = fileHelper.scanFileByUrl(downloadLinks.get(1));	
         }
-        
         
         Data[] ret = new Data[datasFromWeb.size()];
         for(int i = 0; i < datasFromWeb.size(); i++){
             ret[i] = datasFromWeb.get(i);
-        	System.out.println("TEST FOR FUN MAN ");
-        	System.out.println(ret[i].getStockExchange());
-        	System.out.println(ret[i].getSessions().length);
         }
-        
         return ret;
 
     }

@@ -25,6 +25,8 @@ public class UpdateData implements Initializable {
     @FXML
     private ProgressBar updateManuallyProgressBar;
     @FXML
+    private ProgressBar automaticProgressBar;
+    @FXML
     private Button nextBtn;
 
     @Override
@@ -62,6 +64,14 @@ public class UpdateData implements Initializable {
 
     @FXML
     private void downloadData(ActionEvent event) {
-
+    	new Thread(()->  {
+    		Input.updateDataFromWeb();
+    		Platform.runLater(()->{
+    			automaticProgressBar.setProgress(1);
+    			nextBtn.setDisable(false);
+    		});
+    	}).start();
+    	
+    	automaticProgressBar.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
     }
 }
