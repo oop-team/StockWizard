@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class PriceFloor extends SentenceGenerator {
+
     @Override
     public String example() {
         return "Hết phiên giao dịch ngày hôm nay, số mã tăng trần chiếm áp đảo ";
@@ -58,6 +59,8 @@ public class PriceFloor extends SentenceGenerator {
             return "Kết thúc phiên giao dịch ngày hôm nay, trên sàn HNX, số mã giảm sàn chiếm áp đảo với"
                     + g + "mã.";
         }
+
+        return null;
     }
 }
 
