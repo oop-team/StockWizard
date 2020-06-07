@@ -48,22 +48,27 @@ public class SelectSceneController implements Initializable {
 
     public SelectSceneController() {
         instance = this;
-        listSentences = FXCollections.<Output>observableArrayList();
-        modules = new ArrayList<>();
-        modules.add(new UpDownAndNotTrade());
-        modules.add(new CountUpAndDown());
-        modules.add(new MaxIncreasePercent());
-        modules.add(new SummaryAAV());
-        modules.add(new GroupDepreciation());
-        modules.add(new Liquidity());
-        modules.add(new SumHNXandHSX());
-        modules.add(new SumLiquidity());
-        modules.add(new CountExisting());
-        modules.add(new CandleStickVN30());
-        int id = 0;
-        for (var module : modules){
-            Output output = new Output(id++, module);
-            listSentences.add(output);
+        try {
+            listSentences = FXCollections.<Output>observableArrayList();
+            modules = new ArrayList<>();
+            modules.add(new UpDownAndNotTrade());
+            modules.add(new CountUpAndDown());
+            modules.add(new MaxIncreasePercent());
+            modules.add(new SummaryAAV());
+            modules.add(new GroupDepreciation());
+            modules.add(new Liquidity());
+            modules.add(new SumHNXandHSX());
+            modules.add(new SumLiquidity());
+            modules.add(new CountExisting());
+            modules.add(new CandleStickVN30());
+            int id = 0;
+            for (var module : modules){
+                Output output = new Output(id++, module);
+                listSentences.add(output);
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

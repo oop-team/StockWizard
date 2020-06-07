@@ -6,6 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <GridPane prefHeight="450" prefWidth="450" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SelectSceneController">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" prefWidth="300" percentWidth="100" />
@@ -35,8 +36,16 @@
          </columns>
       </TableView>
       <HBox style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" GridPane.rowIndex="2">
-         <Button mnemonicParsing="false" text="Back" onAction="#gotoUpdate" />
-         <Button mnemonicParsing="false" text="Next" onAction="#gotoResult"/>
+         <Button mnemonicParsing="false" onAction="#gotoUpdate">
+             <graphic>
+                 <FontAwesomeIconView glyphName="ARROW_LEFT" />
+             </graphic>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#gotoResult">
+             <graphic>
+                 <FontAwesomeIconView glyphName="ARROW_RIGHT"/>
+             </graphic>
+         </Button>
       </HBox>
 </GridPane>
 
