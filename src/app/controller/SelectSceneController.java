@@ -88,6 +88,6 @@ public class SelectSceneController implements Initializable {
     }
     @FXML
     public void gotoResult(ActionEvent event) {
-        Mediator.Notify("onGoingResult");
+        Mediator.Notify("onGoingProcessing");
     }
 }

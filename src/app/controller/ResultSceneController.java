@@ -22,11 +22,7 @@ public class ResultSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String text = new String();
-        for(var item : SelectSceneController.getInstance().getListSentences()) {
-            text += item.isSelected() ? "- " + item.getSentenceGenerator().generate() + "\n" : "";
-        }
-        resultTextArea.setText(text);
+        resultTextArea.setText(ProcessingSceneController.getInstance().getTextOutput());
     }
 
     @FXML
