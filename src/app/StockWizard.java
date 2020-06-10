@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
@@ -27,6 +28,7 @@ public class StockWizard extends Application {
         screenController = new ScreenController(scene);
 
         primaryStage.setTitle("Stock Wizard");
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../logo.png")));
         primaryStage.setScene(scene);
         primaryStage.show();
 
