@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="app.controller.ResultSceneController"
@@ -36,7 +37,15 @@
 
     </TextArea>
     <HBox GridPane.rowIndex="2" style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" >
-        <Button mnemonicParsing="false" text="Back" onAction="#gotoSelect"/>
-        <Button mnemonicParsing="false" text="Save" onAction="#save" />
+        <Button mnemonicParsing="false" text="Back" onAction="#gotoSelect">
+            <graphic>
+                <FontAwesomeIconView glyphName="ARROW_LEFT" />
+            </graphic>
+        </Button>
+        <Button mnemonicParsing="false" text="Save" onAction="#save">
+            <graphic>
+                <FontAwesomeIconView glyphName="SAVE" />
+            </graphic>
+        </Button>
     </HBox>
 </GridPane>
