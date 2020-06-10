@@ -1,6 +1,7 @@
 myfile/
 Downloads/
-
+.idea/vcs.xml
+.idea/*.xml
 # Compiled class file
 *.class
 
