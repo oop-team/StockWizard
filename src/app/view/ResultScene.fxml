@@ -1,42 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.TextFlow?>
-<?import javafx.scene.text.Text?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Font?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="app.controller.ResultSceneController"
-          prefHeight="450.0" prefWidth="450.0">
-    <columnConstraints>
-        <ColumnConstraints hgrow="ALWAYS" prefWidth="300" percentWidth="100" />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints prefHeight="30" />
-        <RowConstraints vgrow="ALWAYS" />
-        <RowConstraints prefHeight="30" />
-    </rowConstraints>
+<GridPane prefHeight="450.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ResultSceneController">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
-    <Label text="Result">
-        <font>
-            <Font size="20.0"/>
-        </font>
-    </Label>
-    <TextArea fx:id="resultTextArea" GridPane.rowIndex="1"
-              wrapText="true"
-              editable="true">
-
-    </TextArea>
-    <HBox GridPane.rowIndex="2" style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" >
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" percentWidth="100" prefWidth="300" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints prefHeight="30" />
+    </rowConstraints>
+    <VBox>
+        <TitledPane collapsible="false" text="RESULT">
+            <padding>
+                <Insets />
+            </padding>
+            <TextArea fx:id="resultTextArea" editable="true" prefHeight="473.0" prefWidth="428.0" wrapText="true">
+            </TextArea>
+        </TitledPane>
+    </VBox>
+    <HBox GridPane.rowIndex="1" style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" >
         <Button mnemonicParsing="false" text="Back" onAction="#gotoSelect">
             <graphic>
                 <FontAwesomeIconView glyphName="ARROW_LEFT" />

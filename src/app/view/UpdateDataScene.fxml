@@ -29,6 +29,7 @@
             </rowConstraints>
             <columnConstraints>
                 <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints prefWidth="3" />
                 <ColumnConstraints percentWidth="50" />
             </columnConstraints>
             <VBox prefHeight="159.0" prefWidth="430.0" style="-fx-padding: 0 0 0 50; -fx-alignment: center;">
@@ -42,7 +43,7 @@
                     <ProgressBar fx:id="automaticProgressBar" prefWidth="200.0" progress="0.0" />
                 </VBox>
             </VBox>
-            <VBox style="-fx-padding: 0 0 0 50; -fx-alignment: center;" GridPane.columnIndex="1" >
+            <VBox style="-fx-padding: 0 0 0 50; -fx-alignment: center;" GridPane.columnIndex="2" >
                 <VBox spacing="10" >
                     <Label text="Update manually" />
                     <HBox prefHeight="35.0" prefWidth="430.0" spacing="15.0">
@@ -58,13 +59,14 @@
                 </VBox>
 
             </VBox>
-            <HBox prefHeight="50" GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="BOTTOM_RIGHT">
+            <HBox prefHeight="50" GridPane.columnIndex="2" GridPane.rowIndex="1" alignment="BOTTOM_RIGHT">
                 <Button fx:id="nextBtn" disable="true" mnemonicParsing="false" onAction="#gotoSelect">
                     <graphic>
                         <FontAwesomeIconView glyphName="ARROW_RIGHT" size="20" />
                     </graphic>
                 </Button>
             </HBox>
+            <Separator orientation="VERTICAL" maxHeight="100" prefWidth="1" GridPane.columnIndex="1" />
 <!--            <HBox GridPane.columnIndex="1" prefWidth="50" prefHeight="50" alignment="BOTTOM_RIGHT" style="-fx-padding: 0 0 0 0">-->
 <!--                -->
 <!--            </HBox>-->
