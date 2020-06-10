@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<GridPane prefHeight="450.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ResultSceneController">
+<GridPane prefHeight="800.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ResultSceneController">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
@@ -21,17 +21,17 @@
             <padding>
                 <Insets />
             </padding>
-            <TextArea fx:id="resultTextArea" editable="true" prefHeight="473.0" prefWidth="428.0" wrapText="true">
+            <TextArea fx:id="resultTextArea" prefHeight="919.0" prefWidth="428.0" wrapText="true">
             </TextArea>
         </TitledPane>
     </VBox>
-    <HBox GridPane.rowIndex="1" style="-fx-padding:10 0 0 0" spacing="10" alignment="BOTTOM_RIGHT" >
-        <Button mnemonicParsing="false" text="Back" onAction="#gotoSelect">
+    <HBox alignment="BOTTOM_RIGHT" spacing="10" style="-fx-padding:10 0 0 0" GridPane.rowIndex="1">
+        <Button mnemonicParsing="false" onAction="#gotoSelect" text="Back">
             <graphic>
                 <FontAwesomeIconView glyphName="ARROW_LEFT" />
             </graphic>
         </Button>
-        <Button mnemonicParsing="false" text="Save" onAction="#save">
+        <Button mnemonicParsing="false" onAction="#save" text="Save">
             <graphic>
                 <FontAwesomeIconView glyphName="SAVE" />
             </graphic>
