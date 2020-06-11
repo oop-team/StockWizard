@@ -1,7 +1,7 @@
 package app.controller;
 
 import app.controller.helper.Mediator;
-import model.Output;
+import app.model.Output;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -59,7 +59,6 @@ public class SelectSceneController implements Initializable {
             modules.add(new Liquidity());
             modules.add(new SumHNXandHSX());
             modules.add(new SumLiquidity());
-            modules.add(new CountExisting());
             modules.add(new CandleStickVN30());
             modules.add(new DifferencePercent());
             int id = 0;

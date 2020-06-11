@@ -23,7 +23,7 @@ public class StockWizard extends Application {
         this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("view/UpdateDataScene.fxml"));
         Scene scene = new Scene(root, 750, 450);
-        scene.getStylesheets().add("style/style.css");
+        scene.getStylesheets().add("app/view/style.css");
         screenController = new ScreenController(scene);
 
         primaryStage.setTitle("Stock Wizard");

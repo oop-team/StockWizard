@@ -67,7 +67,7 @@
                 </Button>
             </HBox>
             <Separator orientation="VERTICAL" maxHeight="100" prefWidth="1" GridPane.columnIndex="1" />
-<!--            <HBox GridPane.columnIndex="1" prefWidth="50" prefHeight="50" alignment="BOTTOM_RIGHT" style="-fx-padding: 0 0 0 0">-->
+<!--            <HBox GridPane.columnIndex="1" prefWidth="50" prefHeight="50" alignment="BOTTOM_RIGHT" app.view.style="-fx-padding: 0 0 0 0">-->
 <!--                -->
 <!--            </HBox>-->
         </GridPane>
