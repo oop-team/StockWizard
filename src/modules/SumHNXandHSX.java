@@ -14,7 +14,7 @@ public class SumHNXandHSX extends SentenceGenerator {
 
     @Override
     public String generate() {
-        float[] sum = new float[2];
+        double[] sum = new double[2];
         for (int i = 0; i <= 1; i++) {
             Session[] sessions = data[i].getSessions();
             Date today = sessions[0].getDate();
@@ -26,8 +26,8 @@ public class SumHNXandHSX extends SentenceGenerator {
             }
         }
 
-        float hnx = ((float) sum[0] + 1) / 1000000000;
-        float hsx = ((float) sum[1] + 1) / 1000000000;
+        double hnx = ((double) sum[0] + 1) / 1000000000;
+        double hsx = ((double) sum[1] + 1) / 1000000000;
         
         String[] ret = new String[2];
         ret[0] = String.format("Hôm nay, thanh khoản vào thị trường không quá thấp, HSX đạt %f tỷ đồng và HNX đạt hơn %f tỷ đồng",

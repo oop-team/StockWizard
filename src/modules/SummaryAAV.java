@@ -22,24 +22,24 @@ public class SummaryAAV extends SentenceGenerator {
 
     @Override
     public String generate() {
-        float[] result = calc(Input.inputData[3].getSessions());
+        double[] result = calc(Input.inputData[3].getSessions());
         NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VI"));
         String res = "";
         if (result[0] > 0) {
             res = String.format("So với ngày hôm qua, giá cổ phiếu AAV tăng: %.2f%%, tổng số tiền giao dịch: %s VNĐ, " +
-                    "tổng khối lượng giao dịch: %d cổ phiếu", result[0], numberFormat.format(result[2]), (int) result[1]);
+                    "tổng khối lượng giao dịch: %d cổ phiếu", result[0], numberFormat.format(result[2]), (long) result[1]);
         } else if (result[0] < 0) {
             res = String.format("So với ngày hôm qua, giá cổ phiếu AAV giảm: %.2f%%, tổng số tiền giao dịch: %s VNĐ, " +
-                    "tổng khối lượng giao dịch: %d cổ phiếu", -result[0], numberFormat.format(result[2]), (int) result[1]);
+                    "tổng khối lượng giao dịch: %d cổ phiếu", -result[0], numberFormat.format(result[2]), (long) result[1]);
         } else {
             res = String.format("So với ngày hôm qua, giá cổ phiếu AAV không đổi, tổng số tiền giao dịch: %s VNĐ, " +
-                    "tổng khối lượng giao dịch: %d cổ phiếu", numberFormat.format(result[2]), (int) result[1]);
+                    "tổng khối lượng giao dịch: %d cổ phiếu", numberFormat.format(result[2]), (long) result[1]);
         }
         return res;
     }
 
-    private float[] calc(Session[] sessions) {
-        float[] result = new float[3];
+    private double[] calc(Session[] sessions) {
+        double[] result = new double[3];
         Date Today = sessions[0].getDate();
         Date Tomorrow = null;
 
