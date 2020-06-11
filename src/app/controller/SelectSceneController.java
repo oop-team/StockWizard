@@ -66,6 +66,8 @@ public class SelectSceneController implements Initializable {
             modules.add(new CandleStickModule(Dictionary.STOCK_BASKETS[3]));
             modules.add(new DifferencePercent());
             modules.add(new Volume());
+            modules.add(new HighestCeilingPrice());
+
             int id = 0;
             for (var module : modules){
                 Output output = new Output(id++, module);
