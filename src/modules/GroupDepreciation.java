@@ -31,10 +31,11 @@ public class GroupDepreciation extends SentenceGenerator{
     public String generate(int stockExchange, String group) {
         Filter filter = new Filter();
         Session[] sessions = filter.filter(Input.inputData[stockExchange].getSessions(), group);
+
         String ticker1 = "";
         String ticker2 = "";
-        float percentReduction1 = 0, percentReduction2 = 0;
-        Map<String, Float> map = new HashMap<>();
+        double percentReduction1 = 0, percentReduction2 = 0;
+        Map <String, Float> map = new HashMap<>();
 
         Date today = sessions[0].getDate();
         Date previousDay = null; // Ngày giao dịch trước đó
