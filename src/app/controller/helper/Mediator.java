@@ -31,7 +31,7 @@ public class Mediator {
         {
             boolean found = false;
             for (var item : action_dict.get(token)) {
-                if (item.toString() == callBack.toString())
+                if (item.toString().equals(callBack.toString()))
                     found = true;
             }
             if (!found)

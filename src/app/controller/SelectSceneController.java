@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modules.*;
+import utilities.Dictionary;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -60,6 +61,10 @@ public class SelectSceneController implements Initializable {
             modules.add(new SumHNXandHSX());
             modules.add(new SumLiquidity());
             modules.add(new CandleStickVN30());
+            modules.add(new CandleStickModule(Dictionary.STOCK_BASKETS[0]));
+            modules.add(new CandleStickModule(Dictionary.STOCK_BASKETS[1]));
+            modules.add(new CandleStickModule(Dictionary.STOCK_BASKETS[2]));
+            modules.add(new CandleStickModule(Dictionary.STOCK_BASKETS[3]));
             modules.add(new DifferencePercent());
             int id = 0;
             for (var module : modules){

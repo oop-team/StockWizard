@@ -100,8 +100,10 @@ public class Dictionary {
             String line= ReadFile.readLine();
             String[] tickers = null;
             while (line!=null) {
+
+
                 tickers = line.split("/");
-                if (basketName == tickers[0]) // tickers[0] lưu tên rổ
+                if (basketName.equals(tickers[0])) // tickers[0] lưu tên rổ
                     break;
                 line = ReadFile.readLine();
             }
