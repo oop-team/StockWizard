@@ -21,6 +21,8 @@ public class Input {
      */
     public static Data[] inputData;
 
+    private final static String DOWNLOAD_URL = "https://s.cafef.vn/du-lieu/download.chn";
+
     public static void updateDataFromLocal(String filePath){
         isUpdateByAuto = false;
         Data[] HNX_HSX_UPCOM = getDataFromLocal(filePath);
@@ -43,7 +45,7 @@ public class Input {
     
     public static void updateDataFromWeb() {
         isUpdateByAuto = true;
-        Data[] HNX_HSX_UPCOM = getDataFromWeb("https://s.cafef.vn/du-lieu/download.chn");
+        Data[] HNX_HSX_UPCOM = getDataFromWeb(DOWNLOAD_URL);
         // Gộp 3 sàn lại vào inputData[3]
         inputData = new Data[4];
         Session[] sessions = new Session[HNX_HSX_UPCOM[0].getSessions().length

@@ -59,8 +59,10 @@ public class SelectSceneController implements Initializable {
             modules.add(new Liquidity());
             modules.add(new SumHNXandHSX());
             modules.add(new SumLiquidity());
-           // modules.add(new CountExisting());
-            modules.add(new CandleStickVN30());
+            modules.add(new CandleStickModule("BlueChip"));
+            modules.add(new CandleStickModule("VN30"));
+            modules.add(new CandleStickModule("HNX30"));
+            modules.add(new CandleStickModule("HOT"));
             modules.add(new DifferencePercent());
             int id = 0;
             for (var module : modules){

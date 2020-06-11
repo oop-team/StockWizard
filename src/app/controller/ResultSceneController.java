@@ -47,12 +47,10 @@ public class ResultSceneController implements Initializable {
         FileOutputStream outputStream = new FileOutputStream(filePath+ "/result.txt");
         byte[] strToBytes = str.getBytes();
         outputStream.write(strToBytes);
-
         outputStream.close();
-
         Alert alert = new Alert(AlertType.INFORMATION);
 
-        alert.setContentText("Result is saved in : "+ filePath);
+        alert.setContentText("Result is saved in : "+ filePath+"/result.txt");
         alert.show();
     }
 }
