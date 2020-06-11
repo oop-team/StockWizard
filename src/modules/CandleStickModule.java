@@ -38,11 +38,4 @@ public class CandleStickModule extends SentenceGenerator{
         CandleType type = candleStick.getType();
         return this.basketName +" hôm nay giao dịch tạo thành cây nến " + type.toString();
     }
-
-    // Test
-    public static void main(String[] args) {
-        Input.updateDataFromLocal("myfile/CafeF.SolieuGD.Upto27042020.zip");
-        CandleStickVN30 c30 = new CandleStickVN30();
-        System.out.println(c30.generate());
-    }
 }

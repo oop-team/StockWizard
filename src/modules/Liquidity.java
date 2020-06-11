@@ -40,9 +40,4 @@ public class Liquidity extends SentenceGenerator {
 
         return String.format("Cổ phiếu %s của %s có tính thanh khoản chưa cao, cần phải xem xét để có thể đầu tư", stock, new Dictionary().getEnterpriseName(stock));
     }
-
-    public static void main(String[] args) {
-        Liquidity s = new Liquidity();
-        System.out.println(s.generate("AAA"));
-    }
 }

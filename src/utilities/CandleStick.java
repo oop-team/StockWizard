@@ -141,19 +141,4 @@ public class CandleStick {
     public float getLow() {
         return low;
     }
-
-    public static void main(String[] args) throws ParseException {
-        // Input dữ liệu trước
-        Input.updateDataFromLocal("res/sample/data/CafeF.SolieuGD.Upto27042020.zip");
-
-        // Sử dụng bộ lọc theo nhóm
-        Filter filter = new Filter();
-        String group = Dictionary.INDUSTRY_GROUPS[0];
-        Session[] sessions = filter.filter(Input.inputData[3].getSessions(), group);
-
-        for (var session : sessions) {
-            System.out.println(new CandleStick(session).getType());
-        }
-    }
-
 }

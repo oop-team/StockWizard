@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.FileNotFoundException;
 
 public class StockWizard extends Application {
@@ -28,7 +29,8 @@ public class StockWizard extends Application {
         screenController = new ScreenController(scene);
 
         primaryStage.setTitle("Stock Wizard");
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../logo.png")));
+        File f = new File(StockWizard.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        primaryStage.getIcons().add(new Image("logo.png"));
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -43,22 +45,22 @@ public class StockWizard extends Application {
     }
 
     public void onGoingUpdateData(ActionEvent e) {
-        screenController.active("../../view/UpdateDataScene.fxml");
+        screenController.active(getClass().getResource("view/UpdateDataScene.fxml"));
     }
 
     public void onGoingSelectSentence(ActionEvent e) {
-        screenController.active("../../view/SelectScene.fxml");
+        screenController.active(getClass().getResource("view/SelectScene.fxml"));
     }
 
     public void onGoingProcessing(ActionEvent e) {
-        screenController.active("../../view/ProcessingScene.fxml");
+        screenController.active(getClass().getResource("view/ProcessingScene.fxml"));
     }
 
     public void onGoingResult(ActionEvent e) {
-        screenController.active("../../view/ResultScene.fxml");
+        screenController.active(getClass().getResource("view/ResultScene.fxml"));
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         launch(args);
     }
 

@@ -72,24 +72,4 @@ public class Filter {
 
         return ret.toArray(new Session[0]);
     }
-
-    // Ví dụ sử dụng bộ lọc
-    public static void main(String[] args) throws ParseException {
-        // Input dữ liệu trước
-        Input.updateDataFromLocal("myfile/CafeF.SolieuGD.Upto27042020.zip");
-
-        // Sử dụng bộ lọc theo nhóm
-        Filter filter = new Filter();
-        String group = Dictionary.INDUSTRY_GROUPS[0];
-        Session[] sessions = filter.filter(Input.inputData[3].getSessions(), group);
-        System.out.println("Số phiên giao dịch của " + group + " là " + sessions.length);
-
-        // Sử dụng bộ lọc theo thời gian
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date from = df.parse("2020-03-01");
-        Date to = df.parse("2020-03-31");
-        sessions = filter.filter(Input.inputData[3].getSessions(), from, to);
-        System.out.println("Số phiên giao dịch của 3 sàn trong tháng 3 là " + sessions.length);
-
-    }
 }

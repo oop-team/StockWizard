@@ -20,13 +20,6 @@ public class UpDownAndNotTrade extends SentenceGenerator {
 
         int[] count = new int[4];
         for(int i = 0; i < 4; i++){
-
-//        System.out.println(countHNX[0]);
-//        System.out.println(countHSX[0]);
-//        System.out.println(countUPCOM[0]);
-//        int[] count = new int[3];
-//        for(int i = 0; i < 3; i++){
-
             count[i] = countHNX[i] + countHSX[i] + countUPCOM[i];
         }
         String[] ret = new String[3];

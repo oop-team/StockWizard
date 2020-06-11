@@ -55,17 +55,17 @@ public class SelectSceneController implements Initializable {
             modules.add(new UpDownAndNotTrade());
             modules.add(new CountUpAndDown());
             modules.add(new MaxIncreasePercent());
-            modules.add(new SummaryAAV());
+            modules.add(new Summary());
             modules.add(new GroupDepreciation());
             modules.add(new Liquidity());
             modules.add(new SumHNXandHSX());
             modules.add(new SumLiquidity());
-            modules.add(new CandleStickVN30());
             modules.add(new CandleStickModule(Dictionary.STOCK_BASKETS[0]));
             modules.add(new CandleStickModule(Dictionary.STOCK_BASKETS[1]));
             modules.add(new CandleStickModule(Dictionary.STOCK_BASKETS[2]));
             modules.add(new CandleStickModule(Dictionary.STOCK_BASKETS[3]));
             modules.add(new DifferencePercent());
+            modules.add(new Volume());
             int id = 0;
             for (var module : modules){
                 Output output = new Output(id++, module);

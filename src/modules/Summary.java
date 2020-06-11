@@ -1,6 +1,5 @@
 package modules;
 
-import data.Data;
 import data.Input;
 import data.Session;
 
@@ -8,13 +7,22 @@ import java.text.NumberFormat;
 import java.util.Date;
 
 import java.util.Locale;
+import java.util.Random;
 
 /**
- * Tóm tắt tình hình của CTCP Sơn Địa Ốc (AAV)
+ * Tóm tắt tình hình của một công ty
  *
  * @author Hieu
  */
-public class SummaryAAV extends SentenceGenerator {
+public class Summary extends SentenceGenerator {
+
+    private String ticker;
+
+    public Summary(){
+        String[] tickerSample = {"STB", "HPG", "CTG", "ITA", "PVD", "FPT", "SBT", "DPM", "HAG", "SSI", "VNM", "KDM", "MSN", "PNJ", "CII", "GC", "VCB", "EIB", "VIC", "QCG", "DIG", "BVH", "GMD", "ISJ", "KDC", "SJS", "REE", "HVG", "ACB", "", "BVS", "CAP", "CEO", "DDG", "DGC", "DHT", "DP3", "DTD", "HUT", "KLF", "L14", "LHC", "MBS", "NDN", "NRC", "PVB", "PVC", "PVI", "PVS", "SHB", "SHS", "SLS", "TNG", "TVC", "VCB", "VCG", "VGS", "VMC"};
+        ticker = tickerSample[new Random().nextInt(tickerSample.length)];
+    }
+
     @Override
     public String example() {
         return "So với ngày hôm qua, giá cổ phiếu  tăng: 15%, tổng số tiền giao dịch: 150.000 VNĐ, tổng khối lượng giao dịch: 200 cổ phiếu";
@@ -26,13 +34,13 @@ public class SummaryAAV extends SentenceGenerator {
         NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VI"));
         String res = "";
         if (result[0] > 0) {
-            res = String.format("So với ngày hôm qua, giá cổ phiếu AAV tăng: %.2f%%, tổng số tiền giao dịch: %s VNĐ, " +
+            res = String.format("So với ngày hôm qua, giá cổ phiếu " + ticker + " tăng: %.2f%%, tổng số tiền giao dịch: %s VNĐ, " +
                     "tổng khối lượng giao dịch: %d cổ phiếu", result[0], numberFormat.format(result[2]), (long) result[1]);
         } else if (result[0] < 0) {
-            res = String.format("So với ngày hôm qua, giá cổ phiếu AAV giảm: %.2f%%, tổng số tiền giao dịch: %s VNĐ, " +
+            res = String.format("So với ngày hôm qua, giá cổ phiếu " + ticker + " giảm: %.2f%%, tổng số tiền giao dịch: %s VNĐ, " +
                     "tổng khối lượng giao dịch: %d cổ phiếu", -result[0], numberFormat.format(result[2]), (long) result[1]);
         } else {
-            res = String.format("So với ngày hôm qua, giá cổ phiếu AAV không đổi, tổng số tiền giao dịch: %s VNĐ, " +
+            res = String.format("So với ngày hôm qua, giá cổ phiếu " + ticker + " không đổi, tổng số tiền giao dịch: %s VNĐ, " +
                     "tổng khối lượng giao dịch: %d cổ phiếu", numberFormat.format(result[2]), (long) result[1]);
         }
         return res;
@@ -55,7 +63,7 @@ public class SummaryAAV extends SentenceGenerator {
                       result[2]: tổng tiền
          */
         for (Session s : sessions) {
-            if (s.getTicker().equals("AAV")) {
+            if (s.getTicker().equals(ticker)) {
                 if (s.getDate().equals(Today)) {
                     if (s.getClose() == 0) break; // nếu ngày hôm qua ko giao dịch thì break
                     result[0] = s.getClose();
@@ -69,10 +77,5 @@ public class SummaryAAV extends SentenceGenerator {
             }
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Input.updateDataFromLocal("res/sample/data/CafeF.SolieuGD.Upto27042020.zip");
-        System.out.println(new SummaryAAV().generate());
     }
 }

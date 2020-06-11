@@ -11,6 +11,7 @@ import javafx.scene.control.TextArea;
 import java.awt.Window;
 import java.io.*;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 import javafx.stage.DirectoryChooser;
 
@@ -44,10 +45,12 @@ public class ResultSceneController implements Initializable {
     	System.out.println(ProcessingSceneController.getInstance().getTextOutput());
 
         String str = ProcessingSceneController.getInstance().getTextOutput();
+
         FileOutputStream outputStream = new FileOutputStream(filePath+ "/result.txt");
-        byte[] strToBytes = str.getBytes();
-        outputStream.write(strToBytes);
-        outputStream.close();
+        try (Writer out = new BufferedWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8))) {
+            out.write(str);
+        }
+
         Alert alert = new Alert(AlertType.INFORMATION);
 
         alert.setContentText("Result is saved in : "+ filePath+"/result.txt");

@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="StockWizard:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/StockWizard_jar</output-path>
+    <root id="archive" name="StockWizard.jar">
+      <element id="module-output" name="StockWizard" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/res/libs/fontawesomefx-commons-9.1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/res/libs/fontawesomefx-fontawesome-4.7.0-9.1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/res/libs/fontawesomefx-controls-9.1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/res/libs/jsoup-1.13.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -40,12 +40,10 @@ public class Volume extends SentenceGenerator {
 
         String[] ret = new String[2];
         ret[0] = String.format("Hôm nay, cổ phiếu %s dẫn đầu thị trường với khối lượng giao dịch lên tới %f cổ phiếu.", Ticker, maxVolume);
-        ret[2] = String.format("Hôm nay, cổ phiếu %s của %s dẫn đầu thị trường với khối lượng giao dịch lên tới %f cổ phiếu.",
+        ret[1] = String.format("Hôm nay, cổ phiếu %s của %s dẫn đầu thị trường với khối lượng giao dịch lên tới %f cổ phiếu.",
                 Ticker, new Dictionary().getEnterpriseName(Ticker), maxVolume);
 
         return ret[new Random().nextInt(2)];
     }
-
-
 }
 

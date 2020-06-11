@@ -31,8 +31,8 @@ public class GroupDepreciation extends SentenceGenerator{
     public String generate(int stockExchange, String group) {
         Filter filter = new Filter();
         Session[] sessions = filter.filter(Input.inputData[stockExchange].getSessions(), group);
-        String ticker1 = new String();
-        String ticker2 = new String();
+        String ticker1 = "";
+        String ticker2 = "";
         float percentReduction1 = 0, percentReduction2 = 0;
         Map<String, Float> map = new HashMap<>();
 
@@ -89,11 +89,5 @@ public class GroupDepreciation extends SentenceGenerator{
             s += ", mã " + ticker1 + " thuộc nhóm " + group.toLowerCase() + " giảm sâu trong phiên hôm nay";
         }
         return s;
-    }
-
-    public static void main(String[] args) {
-        Input.updateDataFromLocal("res/sample/data/CafeF.SolieuGD.Upto27042020.zip");
-        GroupDepreciation s = new GroupDepreciation();
-        System.out.println(s.generate(0, "Dầu khí"));
     }
 }

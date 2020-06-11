@@ -114,34 +114,4 @@ public class Dictionary {
             return null;
         }
     }
-
-    // Ví dụ cách sử dụng lớp Dictionary
-    public static void main(String[] args) {
-        Dictionary dict = new Dictionary();
-
-        // Duyệt tất cả các rổ
-        for (String basketName : STOCK_BASKETS) {
-            String[] tickers = dict.getTickersByStockBasket(basketName);
-            System.out.println("- Rổ " + basketName + " gồm: ");
-            for (var ticker : tickers) {
-                System.out.print(ticker + ", ");
-            }
-            System.out.println();
-        }
-
-        System.out.println();
-
-        // Duyệt tất cả các nhóm ngành
-        for (String groupName : INDUSTRY_GROUPS) {
-            String[] tickers = dict.getTickersByIndustryGroup(groupName);
-            System.out.println("- Nhóm " + groupName + " gồm: ");
-            for (var ticker : tickers) {
-                System.out.print(ticker + ", ");
-            }
-            System.out.println();
-        }
-
-        // Ví dụ lấy tên doanh nghiệp có mã AAM
-        System.out.println(dict.getEnterpriseName("AAM"));
-    }
 }
