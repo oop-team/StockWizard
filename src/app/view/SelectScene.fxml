@@ -25,7 +25,7 @@
                         <!--                  <PropertyValueFactory property="checkBox"  />-->
                         <!--               </cellValueFactory>-->
                     </TableColumn>
-                    <TableColumn fx:id="sentenceColumn" />
+                    <TableColumn fx:id="sentenceColumn" text="Example" />
                 </columns>
             </TableView>
         </TitledPane>
