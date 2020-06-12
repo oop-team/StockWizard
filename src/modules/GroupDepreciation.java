@@ -4,6 +4,7 @@ import data.Input;
 import data.Session;
 import utilities.Dictionary;
 import utilities.Filter;
+import utilities.SpecificCount;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -36,16 +37,20 @@ public class GroupDepreciation extends SentenceGenerator{
         float percentReduction1 = 0, percentReduction2 = 0;
         Map<String, Float> map = new HashMap<>();
 
-        Date today = sessions[0].getDate();
-        Date previousDay = null; // Ngày giao dịch trước đó
+        SpecificCount countDay= new SpecificCount();
+        Date today = countDay.FindToday(data[0].getSessions());
+        Date previousDay = countDay.FindPreDay(data[0].getSessions());
 
-        // Tìm previousDay
-        for (Session s : sessions){
-            if (!s.getDate().equals(today)){
-                previousDay = s.getDate();
-                break;
-            }
-        }
+//        Date today = sessions[0].getDate();
+//        Date previousDay = null; // Ngày giao dịch trước đó
+//
+//        // Tìm previousDay
+//        for (Session s : sessions){
+//            if (!s.getDate().equals(today)){
+//                previousDay = s.getDate();
+//                break;
+//            }
+//        }
 
         // Tìm danh sách những mã giảm
         for (Session s : sessions) {

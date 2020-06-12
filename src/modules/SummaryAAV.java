@@ -72,7 +72,7 @@ public class SummaryAAV extends SentenceGenerator {
     }
 
     public static void main(String[] args) {
-        Input.updateDataFromLocal("res/sample/data/CafeF.SolieuGD.Upto27042020.zip");
+        Input.updateDataFromLocal("Downloads\\CafeF.SolieuGD.Upto11062020.zip");
         System.out.println(new SummaryAAV().generate());
     }
 }

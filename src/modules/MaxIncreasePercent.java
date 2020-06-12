@@ -4,6 +4,7 @@ import data.Data;
 import data.Session;
 import data.StockExchange;
 import utilities.Dictionary;
+import utilities.SpecificCount;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -27,16 +28,19 @@ public class MaxIncreasePercent extends SentenceGenerator{
             Map<String, Float> map = new HashMap<>();
 
             Session[] sessions = data[i].getSessions();
-            Date today = sessions[0].getDate();
-            Date previousDay = null; // Ngày giao dịch trước đó
-
-            // Tìm previousDay
-            for (Session s : sessions){
-                if (!s.getDate().equals(today)){
-                    previousDay = s.getDate();
-                    break;
-                }
-            }
+            SpecificCount countDay= new SpecificCount();
+            Date today = countDay.FindToday(data[0].getSessions());
+            Date previousDay = countDay.FindPreDay(data[0].getSessions());
+//            Date today = sessions[0].getDate();
+//            Date previousDay = null; // Ngày giao dịch trước đó
+//
+//            // Tìm previousDay
+//            for (Session s : sessions){
+//                if (!s.getDate().equals(today)){
+//                    previousDay = s.getDate();
+//                    break;
+//                }
+//            }
 
             for (Session s : sessions) {
                 String ticker = s.getTicker();

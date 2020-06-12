@@ -52,6 +52,7 @@ public class Counter {
             String ticker = s.getTicker();
             if(s.getDate().equals(today)){
                 map.put(ticker, s.getClose());
+
             }
             else if (s.getDate().equals(previousDay)){
                 if (map.containsKey(ticker)) {

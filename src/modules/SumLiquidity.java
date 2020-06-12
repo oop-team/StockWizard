@@ -1,6 +1,8 @@
 package modules;
 
 import data.Session;
+import utilities.SpecificCount;
+
 import java.util.Date;
 
 public class SumLiquidity extends SentenceGenerator {
@@ -18,15 +20,9 @@ public class SumLiquidity extends SentenceGenerator {
         for (int i = 0; i < 3; i++) {
 
             Session[] sessions = data[i].getSessions();
-            Date today = sessions[0].getDate();
-            Date previousDay = null;
-
-            for (Session s : sessions) {
-                if (!s.getDate().equals(today)) {
-                    previousDay = s.getDate();
-                    break;
-                }
-            }
+            SpecificCount countDay= new SpecificCount();
+            Date today = countDay.FindToday(data[0].getSessions());
+            Date previousDay = countDay.FindPreDay(data[0].getSessions());
 
             for (Session s : sessions) {
                 

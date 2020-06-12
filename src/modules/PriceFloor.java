@@ -2,6 +2,7 @@ package modules;
 
 import data.Session;
 import utilities.Dictionary;
+import utilities.SpecificCount;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -24,15 +25,9 @@ public class PriceFloor extends SentenceGenerator {
         Map<String, Float> map = new HashMap<>();
 
         Session[] sessions = data[0].getSessions();
-        Date today = sessions[0].getDate();
-        Date previousDay = null;
-
-        for (Session s : sessions) {
-            if (!s.getDate().equals(today)) {
-                previousDay = s.getDate();
-                break;
-            }
-        }
+        SpecificCount countDay= new SpecificCount();
+        Date today = countDay.FindToday(data[0].getSessions());
+        Date previousDay = countDay.FindPreDay(data[0].getSessions());
 
         for (Session s : sessions) {
             String ticker = s.getTicker();
